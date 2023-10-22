@@ -7,6 +7,11 @@ public class BasicAnimalNPCController : MonoBehaviour
     public float moveSpeed = 1.0f;
     public float wanderTime = 3.0f;
     public float maxSpeed = 5.0f;
+    public float maxDistFromPlayer = 20.0f;
+    public string playerTag = "Player";
+    private Transform playerTransform;
+
+
 
     private float timer;
     private Vector3 randomDirection;
@@ -16,6 +21,7 @@ public class BasicAnimalNPCController : MonoBehaviour
     void Start()
     {
         timer = wanderTime;
+        playerTransform = GameObject.FindGameObjectWithTag(playerTag).transform; // Find the player due to prefab
         GetNewRandomDirection();
     }
 
@@ -31,9 +37,6 @@ public class BasicAnimalNPCController : MonoBehaviour
         }
 
         // Move the animal in the chosen direction
-
-
-        // Move the animal in the chosen direction
         Vector3 movement = randomDirection * maxSpeed * Time.deltaTime;
         transform.Translate(movement);
 
@@ -41,6 +44,15 @@ public class BasicAnimalNPCController : MonoBehaviour
         if (movement.magnitude > maxSpeed)
         {
             transform.Translate((movement.normalized * maxSpeed - movement) * Time.deltaTime);
+        }
+
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+
+
+        if (distanceToPlayer > maxDistFromPlayer)
+        {
+            // Destroy the NPC if it's too far from the player.
+            Destroy(gameObject);
         }
     }
 

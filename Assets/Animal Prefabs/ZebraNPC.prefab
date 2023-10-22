@@ -131,6 +131,8 @@ MonoBehaviour:
   moveSpeed: 0.2
   wanderTime: 1
   maxSpeed: 2
+  maxDistFromPlayer: 20
+  playerTag: Player
 --- !u!1839735485 &9035009333020011475
 Tilemap:
   m_ObjectHideFlags: 0
