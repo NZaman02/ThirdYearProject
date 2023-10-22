@@ -2818,7 +2818,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000c1d8396e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3282,6 +3282,7 @@ GameObject:
   - component: {fileID: 817266152}
   - component: {fileID: 817266155}
   - component: {fileID: 817266156}
+  - component: {fileID: 817266157}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3442,6 +3443,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.2887163, y: 12}
   m_EdgeRadius: 0
+--- !u!114 &817266157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817266151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990b58c4e4f82dc47b1ca192db63c386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2012802754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,6 +3553,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5900022375346449119, guid: 668a95b11906e4745bec77cdc54d1d2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290187662367206617, guid: 668a95b11906e4745bec77cdc54d1d2e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290187662367206617, guid: 668a95b11906e4745bec77cdc54d1d2e, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8328723876185770976, guid: 668a95b11906e4745bec77cdc54d1d2e, type: 3}

@@ -6,6 +6,7 @@ public class BasicAnimalNPCController : MonoBehaviour
 {
     public float moveSpeed = 1.0f;
     public float wanderTime = 3.0f;
+    public float maxSpeed = 5.0f;
 
     private float timer;
     private Vector3 randomDirection;
@@ -30,7 +31,17 @@ public class BasicAnimalNPCController : MonoBehaviour
         }
 
         // Move the animal in the chosen direction
-        transform.Translate(randomDirection * moveSpeed * Time.deltaTime);
+
+
+        // Move the animal in the chosen direction
+        Vector3 movement = randomDirection * maxSpeed * Time.deltaTime;
+        transform.Translate(movement);
+
+        // Ensure the NPC does not exceed the maximum speed.
+        if (movement.magnitude > maxSpeed)
+        {
+            transform.Translate((movement.normalized * maxSpeed - movement) * Time.deltaTime);
+        }
     }
 
     private void GetNewRandomDirection()
