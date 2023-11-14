@@ -51,11 +51,17 @@ public class QuizManager : MonoBehaviour
             }
         }
         
-        //finds where 
-        for(int i = 0; i < myAnimalFactsList.length; i++)
+        //finds where animal is
+        for(int i = 0; i < myAnimalFactsList.Count; i++)
         {
-
+            int indexNeeded = 0;
+            if (myAnimalFactsList[i].name == animalInteracted)
+            {
+                indexNeeded = i;
+            } 
         }
+
+
 
     }
 
@@ -103,9 +109,7 @@ public class QuizManager : MonoBehaviour
             newAnimal.funFact = data[4 * (i + 1) + 1];
 
             myAnimalFactsList.Add(newAnimal);
-}       
-
-
+        }       
     }
 
 
