@@ -15,14 +15,15 @@ public class QuestionsAndAnswers : MonoBehaviour
     //read csv stuff
     public TextAsset answerBankText;
 
-    public string animalInteracted;
     public List<AnimalAns> myAnimalFactsList = new List<AnimalAns>();
 
 
     public void setUp()
     {
+        Answers = new string[] { "A", "B", "C", "D" };
         readCSV();
-        Debug.Log(myAnimalFactsList);
+        string animalInteracted = PlayerPrefs.GetString("Animal");
+
         int indexNeeded = 0;
         //finds where animal is that will be asked about 
         for (int i = 0; i < myAnimalFactsList.Count; i++)
@@ -33,6 +34,7 @@ public class QuestionsAndAnswers : MonoBehaviour
                 indexNeeded = i;
             }
         }
+    
 
         //find 3 non related animals to deceive
         List<int> possibleIndices = Enumerable.Range(0, myAnimalFactsList.Count).ToList();
@@ -57,10 +59,17 @@ public class QuestionsAndAnswers : MonoBehaviour
             //puts away right answer in correct answer spot
             if(i == CorrectAnswer)
             {
+                Debug.Log(i);
+                Debug.Log(indexNeeded);
+                Debug.Log(myAnimalFactsList.Count);
                 Answers[i] = myAnimalFactsList[indexNeeded].name;
             }
             else
             {
+                Debug.Log(i);
+                Debug.Log(wrongAniDone);
+                Debug.Log(incorrectAnimals);
+                Debug.Log(myAnimalFactsList.Count);
                 //puts wrong answers in extra answer spots
                 Answers[i] = myAnimalFactsList[incorrectAnimals[wrongAniDone]].name;
                 wrongAniDone ++;
@@ -74,8 +83,6 @@ public class QuestionsAndAnswers : MonoBehaviour
         //reads CSV into string
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
         int numOfAnimal = data.Length / 12 - 1;
-
-        Debug.Log(data);
 
         for (int i = 0; i < numOfAnimal; i++)
         {
@@ -98,7 +105,6 @@ public class QuestionsAndAnswers : MonoBehaviour
             newAnimal.predators = data[offset + 10];
             newAnimal.funFact = data[offset + 11];
 
-            Debug.Log($"Animal Name: {newAnimal.name}, Endangered Status: {newAnimal.endangeredStatus}");
             myAnimalFactsList.Add(newAnimal);
         }
 

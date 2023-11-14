@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 public class NPCInteractable : MonoBehaviour
@@ -11,16 +12,13 @@ public class NPCInteractable : MonoBehaviour
 
     public void Interact()
     {
+        //so quiz knows what animal
+        PlayerPrefs.SetString("Animal", animalName);
         //activates quiz
         SceneManager.LoadScene("Quiz Scene");
-      
-        // Find the QuestionsAndAnswers in the scene
-        QuestionsAndAnswers quizManager = FindObjectOfType<QuestionsAndAnswers>();
-        if (quizManager != null)
-        {
-            // Call the method to pass the animalName to QuestionsAndAnswers
-            quizManager.animalInteracted = animalName;
-        }
+
+     
+
     }
 
 

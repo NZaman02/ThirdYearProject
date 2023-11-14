@@ -9,30 +9,36 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public TMP_Text QuestionTxt;
 
-
-    //helps choose animals 
+    private bool answered;
+    
    
     private void Start()
     {
+        answered = false;
         QnA.setUp();
         generateQuestion();
     }
 
-    void setAnswers()
+    public void correct()
     {
-        //will get from qA class 
-        for (int i = 0; i < options.Length; i++) {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA.Answers[i];
-        }
-       
+        answered = true;
+        generateQuestion(); 
     }
+
+    
 
     void generateQuestion()
     {
-        QuestionTxt.text = QnA.Question;
-        setAnswers();
-        SceneManager.LoadScene("Open World Scene");
+        if (answered == false)
+        {
+            QuestionTxt.text = QnA.Question;
+            setAnswers();
+        }
+        else{
+            SceneManager.LoadScene("Open World Scene");
+        }
+
+
     }
 
 
