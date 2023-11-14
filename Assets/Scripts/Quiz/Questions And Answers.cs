@@ -14,11 +14,10 @@ public class QuestionsAndAnswers : MonoBehaviour
 
     //read csv stuff
     public TextAsset answerBankText;
-
     public List<AnimalAns> myAnimalFactsList = new List<AnimalAns>();
 
 
-    public void setUp()
+    public int setUp()
     {
         Answers = new string[] { "A", "B", "C", "D" };
         readCSV();
@@ -27,8 +26,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         int indexNeeded = 0;
         //finds where animal is that will be asked about 
         for (int i = 0; i < myAnimalFactsList.Count; i++)
-        {
-            
+        {   
             if (myAnimalFactsList[i].name == animalInteracted)
             {
                 indexNeeded = i;
@@ -45,8 +43,6 @@ public class QuestionsAndAnswers : MonoBehaviour
                          .Take(3)
                          .ToArray();
 
-
-
         //set question
         Question = myAnimalFactsList[indexNeeded].name;
 
@@ -54,7 +50,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         CorrectAnswer = UnityEngine.Random.Range(0, 3);
         int wrongAniDone = 0;
         //fills up all 4 answers
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
             //puts away right answer in correct answer spot
             if(i == CorrectAnswer)
@@ -66,16 +62,12 @@ public class QuestionsAndAnswers : MonoBehaviour
             }
             else
             {
-                Debug.Log(i);
-                Debug.Log(wrongAniDone);
-                Debug.Log(incorrectAnimals);
-                Debug.Log(myAnimalFactsList.Count);
                 //puts wrong answers in extra answer spots
                 Answers[i] = myAnimalFactsList[incorrectAnimals[wrongAniDone]].name;
                 wrongAniDone ++;
             }
         }
-
+        return CorrectAnswer;
     }
 
     public void readCSV()
