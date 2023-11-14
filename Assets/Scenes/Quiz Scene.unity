@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &205084133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205084135}
+  - component: {fileID: 205084136}
+  m_Layer: 0
+  m_Name: QnA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205084135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205084133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7905407, y: 1.4092718, z: -11.733096}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205084136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205084133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3407621e087e09449f1f31c66917c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Question: 
+  Answers: []
+  CorrectAnswer: 0
+  answerBankText: {fileID: 4900000, guid: f0e03fa06606540409c67d0bd034cc90, type: 3}
+  animalInteracted: 
+  myAnimalFactsList: []
 --- !u!1 &497418130
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,13 +350,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab37d9de2db075448b1aa32fcf73ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QnA: []
+  QnA: {fileID: 205084136}
   options:
   - {fileID: 1314830859}
   - {fileID: 1288593681}
   - {fileID: 1689828143}
   - {fileID: 497418130}
-  currentQuestion: 0
   QuestionTxt: {fileID: 1093259497}
 --- !u!4 &510232863
 Transform:
@@ -1908,3 +1957,4 @@ SceneRoots:
   - {fileID: 1010370377}
   - {fileID: 1081058204}
   - {fileID: 510232863}
+  - {fileID: 205084135}

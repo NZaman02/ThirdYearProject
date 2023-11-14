@@ -19,9 +19,10 @@ public class QuestionsAndAnswers : MonoBehaviour
     public List<AnimalAns> myAnimalFactsList = new List<AnimalAns>();
 
 
-    public void setUpQA()
+    public void setUp()
     {
         readCSV();
+        Debug.Log(myAnimalFactsList);
         int indexNeeded = 0;
         //finds where animal is that will be asked about 
         for (int i = 0; i < myAnimalFactsList.Count; i++)
@@ -43,7 +44,11 @@ public class QuestionsAndAnswers : MonoBehaviour
                          .ToArray();
 
 
-        //place right answers and wrong q away
+
+        //set question
+        Question = myAnimalFactsList[indexNeeded].name;
+
+        //place right answers and wrong answers 
         CorrectAnswer = UnityEngine.Random.Range(0, 3);
         int wrongAniDone = 0;
         //fills up all 4 answers
@@ -70,27 +75,34 @@ public class QuestionsAndAnswers : MonoBehaviour
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
         int numOfAnimal = data.Length / 12 - 1;
 
+        Debug.Log(data);
 
         for (int i = 0; i < numOfAnimal; i++)
         {
+                int offset = 12 * i;
+
+
             //writes csv into datastructure
             AnimalAns newAnimal = new AnimalAns();
 
-            newAnimal.name = data[4 * (i + 1)];
-            newAnimal.endangeredStatus = data[4 * (i + 1) + 1];
-            newAnimal.latinName = data[4 * (i + 1) + 1];
-            newAnimal.diet = data[4 * (i + 1) + 1];
-            newAnimal.wildAge = data[4 * (i + 1) + 1];
-            newAnimal.captivAge = data[4 * (i + 1) + 1];
-            newAnimal.weight = data[4 * (i + 1) + 1];
-            newAnimal.anLength = data[4 * (i + 1) + 1];
-            newAnimal.anheight = data[4 * (i + 1) + 1];
-            newAnimal.offspringNum = data[4 * (i + 1) + 1];
-            newAnimal.predators = data[4 * (i + 1) + 1];
-            newAnimal.funFact = data[4 * (i + 1) + 1];
+            newAnimal.name = data[offset];
+            newAnimal.endangeredStatus = data[offset + 1];
+            newAnimal.latinName = data[offset + 2];
+            newAnimal.diet = data[offset + 3];
+            newAnimal.wildAge = data[offset + 4];
+            newAnimal.captivAge = data[offset + 5];
+            newAnimal.weight = data[offset + 6];
+            newAnimal.anLength = data[offset + 7];
+            newAnimal.anheight = data[offset + 8];
+            newAnimal.offspringNum = data[offset + 9];
+            newAnimal.predators = data[offset + 10];
+            newAnimal.funFact = data[offset + 11];
 
+            Debug.Log($"Animal Name: {newAnimal.name}, Endangered Status: {newAnimal.endangeredStatus}");
             myAnimalFactsList.Add(newAnimal);
         }
+
+       
     }
 }
 

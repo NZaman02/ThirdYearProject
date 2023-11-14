@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class AnimalAns : MonoBehaviour
+public class AnimalAns
 {
 
     public String name;
