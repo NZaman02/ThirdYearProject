@@ -300,28 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab37d9de2db075448b1aa32fcf73ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QnA:
-  - Question: Q1
-    Answers:
-    - Y
-    - N
-    - N
-    - N
-    CorrectAnswer: 1
-  - Question: Q2
-    Answers:
-    - N
-    - Y
-    - N
-    - N
-    CorrectAnswer: 2
-  - Question: Q3
-    Answers:
-    - N
-    - N
-    - N
-    - Y
-    CorrectAnswer: 4
+  QnA: []
   options:
   - {fileID: 1314830859}
   - {fileID: 1288593681}

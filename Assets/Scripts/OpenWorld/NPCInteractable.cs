@@ -11,15 +11,16 @@ public class NPCInteractable : MonoBehaviour
 
     public void Interact()
     {
+        //activates quiz
         SceneManager.LoadScene("Quiz Scene");
-        // Find the QuizManager in the scene
-        QuizManager quizManager = FindObjectOfType<QuizManager>();
+      
+        // Find the QuestionsAndAnswers in the scene
+        QuestionsAndAnswers quizManager = FindObjectOfType<QuestionsAndAnswers>();
         if (quizManager != null)
         {
-            // Call the method to pass the animalName to QuizManager
+            // Call the method to pass the animalName to QuestionsAndAnswers
             quizManager.animalInteracted = animalName;
         }
-
     }
 
 

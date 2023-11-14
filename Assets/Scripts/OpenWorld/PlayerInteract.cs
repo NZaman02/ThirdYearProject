@@ -9,6 +9,7 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //press and check for colliders
         if (Input.GetKeyDown(KeyCode.E))
         {
             float interactRange = 3f;
@@ -18,6 +19,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (collider.TryGetComponent(out NPCInteractable npcInteractable))
                 {
+                    //do interaction if near
                     npcInteractable.Interact();
                 }
             }
