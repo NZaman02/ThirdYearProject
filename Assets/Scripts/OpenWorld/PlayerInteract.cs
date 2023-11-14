@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public string animalInteractedWith;
 
     // Update is called once per frame
     void Update()

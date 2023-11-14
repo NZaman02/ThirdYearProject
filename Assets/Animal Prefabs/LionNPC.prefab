@@ -228,3 +228,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3bb4482d2977e4d908d3798a11243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animalName: Lion
