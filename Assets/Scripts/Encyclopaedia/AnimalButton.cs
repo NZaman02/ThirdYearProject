@@ -37,7 +37,7 @@ public class AnimalButton : MonoBehaviour
             texture.LoadImage(fileData);
             return texture;
         }
-        catch (System.Exception e)
+        catch 
         {
             byte[] fileData = System.IO.File.ReadAllBytes($"Assets/Sprites/Animals/NA.png");
             Texture2D texture = new Texture2D(2, 2);

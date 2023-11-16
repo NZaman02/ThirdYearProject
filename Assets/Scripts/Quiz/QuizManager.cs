@@ -24,12 +24,14 @@ public class QuizManager : MonoBehaviour
 
     public void correct()
     {
-        SceneManager.LoadScene("Open World Scene");
+        string sceneName = PlayerPrefs.GetString("PrevScene");
+        SceneManager.LoadScene(sceneName);
     }
 
     public void wrong()
     {
-        SceneManager.LoadScene("Open World Scene");
+        string sceneName = PlayerPrefs.GetString("PrevScene");
+        SceneManager.LoadScene(sceneName);
     }
 
     void generateQuestion()
