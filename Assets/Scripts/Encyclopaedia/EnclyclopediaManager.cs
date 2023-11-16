@@ -19,18 +19,20 @@ public class EncyclopediaManager : MonoBehaviour
     void PopulateAnimalGrid()
     {
         readCSV();
-        foreach (var animalData in myAnimalFactsList)
+        for (int i = 1; i < myAnimalFactsList.Count; i++)
         {
-            if (animalData.name != "Animal")
+            if (myAnimalFactsList[i].name != "Animal")
             {
                 //sets up all buttons for encylopedia grid from csv
                 GameObject buttonInstance = Instantiate(animalButtonPrefab, gridParent);
                 AnimalButton animalButton = buttonInstance.GetComponent<AnimalButton>();
-                animalButton.SetAnimalData(animalData);
+                animalButton.SetAnimalData(myAnimalFactsList[i]);
                 
             }
      
         }
+        
+
     }
 
     public void readCSV()
