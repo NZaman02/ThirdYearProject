@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class EncyclopediaManager : MonoBehaviour
@@ -20,10 +21,14 @@ public class EncyclopediaManager : MonoBehaviour
         readCSV();
         foreach (var animalData in myAnimalFactsList)
         {
-
-            GameObject buttonInstance = Instantiate(animalButtonPrefab, gridParent);
-            AnimalButton animalButton = buttonInstance.GetComponent<AnimalButton>();
-            animalButton.SetAnimalData(animalData);
+            if (animalData.name != "Animal")
+            {
+                //sets up all buttons for encylopedia grid from csv
+                GameObject buttonInstance = Instantiate(animalButtonPrefab, gridParent);
+                AnimalButton animalButton = buttonInstance.GetComponent<AnimalButton>();
+                animalButton.SetAnimalData(animalData);
+            }
+     
         }
     }
 

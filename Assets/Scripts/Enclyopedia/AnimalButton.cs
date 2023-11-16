@@ -16,7 +16,7 @@ public class AnimalButton : MonoBehaviour
     public void SetAnimalData(AnimalAns data)
     {
         animalData = data;
-        nameText.text = data.endangeredStatus;
+        nameText.text = data.name;
     }
 
     public void OnButtonClick()
