@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
@@ -13,23 +14,24 @@ public class EncyclopediaManager : MonoBehaviour
 
     void Start()
     {
-        PopulateAnimalGrid();
+        StartCoroutine(PopulateAnimalGrid());
     }
 
-    void PopulateAnimalGrid()
+    IEnumerator PopulateAnimalGrid()
     {
         readCSV();
         for (int i = 1; i < myAnimalFactsList.Count; i++)
         {
-            if (myAnimalFactsList[i].name != "Animal")
-            {
+           
                 //sets up all buttons for encylopedia grid from csv
                 GameObject buttonInstance = Instantiate(animalButtonPrefab, gridParent);
                 AnimalButton animalButton = buttonInstance.GetComponent<AnimalButton>();
                 animalButton.SetAnimalData(myAnimalFactsList[i]);
-                
-            }
-     
+
+                yield return null;
+
+            
+
         }
         
 

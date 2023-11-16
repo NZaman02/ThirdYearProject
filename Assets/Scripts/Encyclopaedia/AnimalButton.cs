@@ -17,6 +17,7 @@ public class AnimalButton : MonoBehaviour
 
     public void SetAnimalData(AnimalAns data)
     {
+        GetComponent<Button>().onClick.AddListener(OnButtonClick);
         //sets up images, data and listeners for all buttons
         animalData = data;
         nameText.text = data.name;
@@ -30,7 +31,7 @@ public class AnimalButton : MonoBehaviour
             animalImage.sprite = animalSprite;
         }
       
-        GetComponent<Button>().onClick.AddListener(OnButtonClick);
+    
 
 
     }
