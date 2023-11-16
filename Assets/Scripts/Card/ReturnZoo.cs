@@ -1,11 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
-public class ButtonController : MonoBehaviour
+public class ReturnZoo : MonoBehaviour
 {
-    public string currentScene;
     private void Start()
     {
         // Attach the button click event listener
@@ -15,13 +15,6 @@ public class ButtonController : MonoBehaviour
     // Handle button click event
     void OnButtonClick()
     {
-        PlayerPrefs.SetString("PrevScene", currentScene);
         SceneManager.LoadScene("Encyclopaedia");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-     
     }
 }

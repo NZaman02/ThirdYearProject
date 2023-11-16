@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Quiz Scene.unity
     guid: b77d2a39607a78644b650171863c1961
   - enabled: 1
-    path: Assets/Scenes/Encylopedia Scene.unity
+    path: Assets/Scenes/Encyclopaedia.unity
     guid: a7d828c9a3d023c409e930a13da2cc4e
   m_configObjects: {}

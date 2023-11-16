@@ -55,9 +55,7 @@ public class QuestionsAndAnswers : MonoBehaviour
             //puts away right answer in correct answer spot
             if(i == CorrectAnswer)
             {
-                Debug.Log(i);
-                Debug.Log(indexNeeded);
-                Debug.Log(myAnimalFactsList.Count);
+               
                 Answers[i] = myAnimalFactsList[indexNeeded].name;
             }
             else

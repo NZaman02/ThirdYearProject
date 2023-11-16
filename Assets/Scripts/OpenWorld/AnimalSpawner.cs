@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimalSpawner : MonoBehaviour
 {
 
-    public GameObject[] animalPrefabs; // Assign your animal prefabs to this array in the Inspector
+    public GameObject[] animalPrefabs; // prefabs to spawn
     public float spawnInterval = 5.0f; // Time between spawns
     public float spawnRadius = 10.0f; // Maximum distance can be spawned at
     public float maxPlayerDistance = 10.0f; // Maximum distance can be spawned from player
@@ -61,7 +61,7 @@ public class AnimalSpawner : MonoBehaviour
     {
         float maxDistance = 0f;
         int furthestIndex = -1;
-
+        //kills far away animals
         for (int i = 0; i < spawnedAnimals.Count; i++)
         {
             float distance = Vector3.Distance(spawnedAnimals[i].transform.position, player.position);

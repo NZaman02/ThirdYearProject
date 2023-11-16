@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class AnimalButton : MonoBehaviour
@@ -13,8 +14,10 @@ public class AnimalButton : MonoBehaviour
     public Image animalImage;
     public TMP_Text nameText; // Reference to the Text component displaying the animal's name
 
+
     public void SetAnimalData(AnimalAns data)
     {
+        //sets up images, data and listeners for all buttons
         animalData = data;
         nameText.text = data.name;
         
@@ -26,6 +29,9 @@ public class AnimalButton : MonoBehaviour
             Sprite animalSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
             animalImage.sprite = animalSprite;
         }
+      
+        GetComponent<Button>().onClick.AddListener(OnButtonClick);
+
 
     }
     private Texture2D LoadTexture(string path)
@@ -46,9 +52,11 @@ public class AnimalButton : MonoBehaviour
         }
     }
 
-    public void OnButtonClick()
+    void OnButtonClick()
     {
-        // Implement logic to show more information about the clicked animal
-        Debug.Log($"Clicked on {animalData.name}. Description: {animalData.endangeredStatus}");
+        //so quiz knows what animal
+        PlayerPrefs.SetString("Animal", animalData.name);
+        //activates quiz
+        SceneManager.LoadScene("AnimalCard");
     }
 }

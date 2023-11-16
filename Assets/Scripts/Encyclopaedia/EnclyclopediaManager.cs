@@ -27,6 +27,7 @@ public class EncyclopediaManager : MonoBehaviour
                 GameObject buttonInstance = Instantiate(animalButtonPrefab, gridParent);
                 AnimalButton animalButton = buttonInstance.GetComponent<AnimalButton>();
                 animalButton.SetAnimalData(animalData);
+                
             }
      
         }
