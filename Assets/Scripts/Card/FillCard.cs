@@ -23,15 +23,43 @@ public class FillCard : MonoBehaviour
     public TMP_Text funFact;
     public Image animalImage;
 
+
     public TextAsset answerBankText;
+    public TextAsset knowledgeText;
 
     // Start is called before the first frame update
     void Start()
     {
-        //reads data from csv
         string animalName = PlayerPrefs.GetString("Animal");
+        int playerKnowledgeLevel = 0;
+
+        string[] knowledgeData = knowledgeText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+        int numOfAnimal1 = knowledgeData.Length;
+        for (int i = 0; i < numOfAnimal1; i += 2)
+        {
+
+            if (knowledgeData[i] == animalName)
+            {
+                playerKnowledgeLevel = int.Parse(knowledgeData[i + 1]);
+                break;
+            }
+        }
+
+        endangeredStatus.text = "<b>Endangered Status: </b>" + "Locked";
+        latinName.text = "Locked";
+        diet.text = "<b>Dietary Habit: </b>" + "Locked";
+        wildAge.text = "<b>Average Lifespan in Wild: </b>" + "Locked";
+        captivAge.text = "<b>Average Lifespan in Captivity </b>" + "Locked";
+        weight.text = "<b>Average Weight/kg: </b>" + "Locked";
+        anLength.text = "<b>Average Length/m: </b>" + "Locked";
+        anheight.text = "<b>Average Height/m: </b>" + "Locked";
+        offspringNum.text = "<b>Average Offspring: </b>" + "Locked";
+        predators.text = "<b>Predators: </b>" + "Locked";
+        funFact.text = "Locked";
+
+        //reads data from answer bank csv
+
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-      
         int numOfAnimal = data.Length / 12 - 1;
         for (int i  = 0; i < numOfAnimal; i++)
         {
@@ -40,18 +68,32 @@ public class FillCard : MonoBehaviour
             {
                 //assign relevant info to text once found
                 nameText.text =  data[offset];
-                endangeredStatus.text = "<b>Endangered Status: </b>" + data[offset + 1];
-                latinName.text = data[offset + 2];
-                diet.text = "<b>Dietary Habit: </b>" + data[offset + 3];   
-                wildAge.text = "<b>Average Lifespan in Wild: </b>" + data[offset + 4];
-                captivAge.text = "<b>Average Lifespan in Captivity </b>" + data[offset + 5];
-                weight.text = "<b>Average Weight/kg: </b>" + data[offset + 6];
-                anLength.text = "<b>Average Length/m: </b>" + data[offset + 7];
-                anheight.text = "<b>Average Height/m: </b>" + data[offset + 8];
-                offspringNum.text = "<b>Average Offspring: </b>" + data[offset + 9] + " a year";
-                predators.text = "<b>Predators: </b>" + data[offset + 10];
-                funFact.text = data[offset + 11];
-                
+                if(playerKnowledgeLevel >= 1) {
+                    endangeredStatus.text = "<b>Endangered Status: </b>" + data[offset + 1];
+                    latinName.text = data[offset + 2];
+                }
+                if (playerKnowledgeLevel >= 2)
+                {
+                    diet.text = "<b>Dietary Habit: </b>" + data[offset + 3];
+                    wildAge.text = "<b>Average Lifespan in Wild: </b>" + data[offset + 4];
+                    captivAge.text = "<b>Average Lifespan in Captivity </b>" + data[offset + 5];
+                }
+                if (playerKnowledgeLevel >= 3)
+                {
+                    weight.text = "<b>Average Weight/kg: </b>" + data[offset + 6];
+                    anLength.text = "<b>Average Length/m: </b>" + data[offset + 7];
+                    anheight.text = "<b>Average Height/m: </b>" + data[offset + 8];
+                }
+                if (playerKnowledgeLevel >= 4)
+                {
+                    offspringNum.text = "<b>Average Offspring: </b>" + data[offset + 9] + " a year";
+                    predators.text = "<b>Predators: </b>" + data[offset + 10];
+                }
+                if (playerKnowledgeLevel >= 5)
+                {
+                    funFact.text = data[offset + 11];
+                }
+
                 string imagePath = $"Assets/Sprites/Animals/{data[offset]}.png";
                 Texture2D texture = LoadTexture(imagePath);
                 //adds image

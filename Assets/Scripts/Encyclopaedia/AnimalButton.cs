@@ -36,22 +36,19 @@ public class AnimalButton : MonoBehaviour
         int numOfAnimal = knowledgeData.Length;
         for (int i = 0; i < numOfAnimal; i += 2)
         {
-            Debug.Log(i);
-            Debug.Log("Animal: " + knowledgeData[i] + ", Knowledge: " + knowledgeData[i + 1]);
-
             if (knowledgeData[i] == data.name)
             {
-                starNum = int.Parse(knowledgeData[i + 1]);
-                         
+                starNum = int.Parse(knowledgeData[i + 1]);         
                 break;
             }
         }
      
-        if (starNum > 0){
-        for (int i = 0;i<starNum; i++)
-            {
-            GameObject buttonInstance = Instantiate(starImage.gameObject, gridParent);
-            }
+        if (starNum > 0)
+        {
+            for (int i = 0;i<starNum; i++)
+                {
+                    GameObject buttonInstance = Instantiate(starImage.gameObject, gridParent);
+                }
         }
         
 

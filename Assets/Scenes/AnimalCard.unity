@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.00003, y: -236}
-  m_SizeDelta: {x: 389.338, y: 54.3525}
+  m_AnchoredPosition: {x: 388.42, y: -262.818}
+  m_SizeDelta: {x: 1044.2, y: 107.9884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92562807
 MonoBehaviour:
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -591.11304, w: 0}
+  m_margin: {x: 0, y: 0, z: -7.7977295, w: -2.530426}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -770,6 +770,7 @@ MonoBehaviour:
   funFact: {fileID: 1201674492}
   animalImage: {fileID: 1051248458}
   answerBankText: {fileID: 4900000, guid: f0e03fa06606540409c67d0bd034cc90, type: 3}
+  knowledgeText: {fileID: 4900000, guid: 9b9897a52375c9d4198a417f96ba0783, type: 3}
 --- !u!4 &569589051
 Transform:
   m_ObjectHideFlags: 0
@@ -953,7 +954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61, y: -323}
+  m_AnchoredPosition: {x: 61, y: -355}
   m_SizeDelta: {x: 389.338, y: 54.3525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &827906770
@@ -1413,7 +1414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 389.4214, y: -437.91138}
+  m_AnchoredPosition: {x: 389.4214, y: -463.16}
   m_SizeDelta: {x: 1042.1808, y: 124.1753}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201674492
