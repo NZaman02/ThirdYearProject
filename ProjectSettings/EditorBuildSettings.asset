@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Encyclopaedia.unity
     guid: a7d828c9a3d023c409e930a13da2cc4e
+  - enabled: 1
+    path: Assets/Scenes/AnimalCard.unity
+    guid: 505aa1ac819268a4899cb0083dc40bf1
   m_configObjects: {}

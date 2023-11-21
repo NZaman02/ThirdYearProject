@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class AnimalButton : MonoBehaviour
 {
-   
-
     private AnimalAns[] allAnimals;
     private AnimalAns animalData;
     public Image animalImage;
-    public TMP_Text nameText; // Reference to the Text component displaying the animal's name
-
+    public TMP_Text nameText;
+    public TextAsset playerKnowledge;
+    public Transform gridParent;
+    public GameObject starImage;
+    private int starNum = 0;
 
     public void SetAnimalData(AnimalAns data)
     {
@@ -21,7 +22,7 @@ public class AnimalButton : MonoBehaviour
         //sets up images, data and listeners for all buttons
         animalData = data;
         nameText.text = data.name;
-        
+
         string imagePath = $"Assets/Sprites/Animals/{data.name}.png";
         Texture2D texture = LoadTexture(imagePath);
 
@@ -30,9 +31,29 @@ public class AnimalButton : MonoBehaviour
             Sprite animalSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
             animalImage.sprite = animalSprite;
         }
-      
-    
 
+        string[] knowledgeData = playerKnowledge.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+        int numOfAnimal = knowledgeData.Length;
+        for (int i = 0; i < numOfAnimal; i += 2)
+        {
+            Debug.Log(i);
+            Debug.Log("Animal: " + knowledgeData[i] + ", Knowledge: " + knowledgeData[i + 1]);
+
+            if (knowledgeData[i] == data.name)
+            {
+                starNum = int.Parse(knowledgeData[i + 1]);
+                         
+                break;
+            }
+        }
+     
+        if (starNum > 0){
+        for (int i = 0;i<starNum; i++)
+            {
+            GameObject buttonInstance = Instantiate(starImage.gameObject, gridParent);
+            }
+        }
+        
 
     }
     private Texture2D LoadTexture(string path)
