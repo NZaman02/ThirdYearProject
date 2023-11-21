@@ -15,7 +15,7 @@ public class QuestionsAndAnswers : MonoBehaviour
     //read csv stuff
     public TextAsset answerBankText;
     public List<AnimalAns> myAnimalFactsList = new List<AnimalAns>();
-
+    public TextAsset playerKnowledgeText;
 
     public int setUp()
     {
@@ -32,8 +32,7 @@ public class QuestionsAndAnswers : MonoBehaviour
                 indexNeeded = i;
             }
         }
-    
-
+   
         //find 3 non related animals to deceive
         List<int> possibleIndices = Enumerable.Range(0, myAnimalFactsList.Count).ToList();
         possibleIndices.Remove(indexNeeded);
@@ -43,8 +42,55 @@ public class QuestionsAndAnswers : MonoBehaviour
                          .Take(3)
                          .ToArray();
 
+
+        //working out what questions can be asked
+        int[] QuestionsAvailable = { 2, 5, 8, 10 };
+        string[] knowledgeData = playerKnowledgeText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+        int numOfAnimal1 = knowledgeData.Length;
+        int questionsToPick = 1;
+        for (int i = 0; i < numOfAnimal1; i += 2)
+        {
+            if (knowledgeData[i] == animalInteracted)
+            {
+                questionsToPick = int.Parse(knowledgeData[i + 1]);
+                break;
+            }
+        }
+
+
+
+        //choses a question to ask from available
+        int QuestionToAsk = UnityEngine.Random.Range(1, QuestionsAvailable[questionsToPick-1]);
+        
+        Debug.Log("AAA");
+        Debug.Log(questionsToPick);
+        Debug.Log(QuestionsAvailable[questionsToPick-1]);
+        Debug.Log(QuestionToAsk);
+
         //set question
-        Question = myAnimalFactsList[indexNeeded].name;
+        switch (QuestionToAsk)
+        {
+            case 1: Question = "What is this animal's conservation status";
+                break;
+            case 2: Question = "What is this animal's latin name?";
+                break;
+            case 3: Question = "What type of diet does this animal follow?";
+                break;
+            case 4: Question = "What is the average lifespan for this animal in the WILD?";
+                break;
+            case 5: Question = "What is the average lifespan for this animal in CAPTIVITY?";
+                break;
+            case 6: Question = "What is the average WEIGHT for this animal?";
+                break;
+            case 7: Question = "What is the average LENGTH for this animal?";
+                break; 
+            case 8: Question = "What is the average HEIGHT for this animal?"; 
+                break;
+            case 9: Question = "How many offspring does the animal have on average?";
+                break;  
+            case 10: Question = "Who is this animal's predators?";
+                break;
+        }
 
         //place right answers and wrong answers 
         CorrectAnswer = UnityEngine.Random.Range(0, 3);
@@ -55,7 +101,6 @@ public class QuestionsAndAnswers : MonoBehaviour
             //puts away right answer in correct answer spot
             if(i == CorrectAnswer)
             {
-               
                 Answers[i] = myAnimalFactsList[indexNeeded].name;
             }
             else
