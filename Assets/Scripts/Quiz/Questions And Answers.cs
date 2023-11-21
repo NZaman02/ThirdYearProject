@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Xml.Serialization;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -10,7 +12,6 @@ public class QuestionsAndAnswers : MonoBehaviour
     public string Question;
     public string[] Answers;
     public int CorrectAnswer;
-
 
     //read csv stuff
     public TextAsset answerBankText;
@@ -57,16 +58,9 @@ public class QuestionsAndAnswers : MonoBehaviour
             }
         }
 
-
-
         //choses a question to ask from available
         int QuestionToAsk = UnityEngine.Random.Range(1, QuestionsAvailable[questionsToPick-1]);
         
-        Debug.Log("AAA");
-        Debug.Log(questionsToPick);
-        Debug.Log(QuestionsAvailable[questionsToPick-1]);
-        Debug.Log(QuestionToAsk);
-
         //set question
         switch (QuestionToAsk)
         {
@@ -92,21 +86,31 @@ public class QuestionsAndAnswers : MonoBehaviour
                 break;
         }
 
+        string[] myAttributes = { "name", "endangeredStatus", "latinName", "diet", "wildAge", "captivAge", "weight", "anLength", "anheight", "offspringNum", "predators" };
+
         //place right answers and wrong answers 
         CorrectAnswer = UnityEngine.Random.Range(0, 3);
         int wrongAniDone = 0;
+        string attributeName = myAttributes[QuestionToAsk];
+        FieldInfo field = typeof(AnimalAns).GetField(attributeName);
+        Debug.Log(attributeName);
+        Debug.Log(field);
+
         //fills up all 4 answers
-        for(int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++)
+        {    
             //puts away right answer in correct answer spot
-            if(i == CorrectAnswer)
+            if (i == CorrectAnswer)
             {
-                Answers[i] = myAnimalFactsList[indexNeeded].name;
+                object attributeValue = field.GetValue(myAnimalFactsList[indexNeeded]);
+                Debug.Log(attributeValue);  
+                Answers[i] = attributeValue?.ToString();
             }
             else
             {
                 //puts wrong answers in extra answer spots
-                Answers[i] = myAnimalFactsList[incorrectAnimals[wrongAniDone]].name;
+                object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
+                Answers[i] = attributeValue?.ToString();
                 wrongAniDone ++;
             }
         }

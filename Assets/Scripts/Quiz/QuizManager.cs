@@ -11,6 +11,7 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public TMP_Text QuestionTxt;
     public Button[] buttonList;
+    public TMP_Text animalNameText;
 
     //right or wrong answer
     public int correctButton;
@@ -46,6 +47,7 @@ public class QuizManager : MonoBehaviour
             options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA.Answers[i];
         }
         options[correctButton].GetComponent<AnswerScript>().isCorrect = true;
+        animalNameText.text = PlayerPrefs.GetString("Animal");
 
     }
 
