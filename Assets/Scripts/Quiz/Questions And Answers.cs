@@ -125,14 +125,11 @@ public class QuestionsAndAnswers : MonoBehaviour
             {
                 if(QuestionToAsk == 3)
                 {
-                    Debug.Log("String Array: " + string.Join(", ", Answers));
                     //if diet situation
                     string correctAns = field.GetValue(myAnimalFactsList[indexNeeded]).ToString();
-                    Debug.Log(incorrectDiet[wrongAniDone]);
                     //if not already added/ correct answer so no duplicates
                     if (!(Array.Exists(Answers, element => element == incorrectDiet[wrongAniDone])) && !(string.Equals(incorrectDiet[wrongAniDone],correctAns, StringComparison.Ordinal)))
                     {
-                        Debug.Log("Added");
                         Answers[i] = incorrectDiet[wrongAniDone];
                     }
                     wrongAniDone++;
