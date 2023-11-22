@@ -1,8 +1,8 @@
 Animal,Endangered Status,Latin Name,Diet,Life span  to  Wild ,Life span captivity ,Average weight/kg,Average Length,Average height,Average offspring,Predators,Fun Fact
 African Bush Elephant,Endangered,Loxodonta africana,Herbivore,60 to 70,80,3000 to 6000,2.5 to 4m,2.5 to 4m,1 every 3 to 9 ,Lions+ wild dogs+ hyenas+ nile crocodiles+ humans,They make calls of 20Hz that can be heard 2km away
-African Clawless Otter,Near Threatened,Aonyx capensis,Carnivores,10 to 12 ,15,12 to 21,1.1 to 1.6m,,1 to 5 a year,Nile croc+ fish eagle+ humans,These otters have a bigger body to to to brain ratio than all other carnivores in southern Africa
+African Clawless Otter,Near Threatened,Aonyx capensis,Carnivore,10 to 12 ,15,12 to 21,1.1 to 1.6m,??,1 to 5 a year,Nile croc+ fish eagle+ humans,These otters have a bigger body to to to brain ratio than all other carnivores in southern Africa
 African Penguin,Endangered,Spheniscus demersus,Carnivore,10 to 15,25,3.1,??,0.45m,2 per year,Cape fur seals. Kelp gulls+ leopards,They are the only penguin species found in Africa
-Black Rhinoceros,Critically Endangered,Diceros bicornis,Herbivore,30 to 35 ,,800 to 1400,3 to 3.75m,1.6 to 1.8m,1 every 2 to 2.5 ,Lions+ spotted hyenas+ humans,They usually have to rely on their sense of smell due to their poor eyesight
+Black Rhinoceros,Critically Endangered,Diceros bicornis,Herbivore,30 to 35 ,??,800 to 1400,3 to 3.75m,1.6 to 1.8m,1 every 2 to 2.5 ,Lions+ spotted hyenas+ humans,They usually have to rely on their sense of smell due to their poor eyesight
 Burchell's Zebra,Least Concern,Equus quagga burchellii,Herbivore,9,40,230 to 320,2.17 to 2.46m,1.1  to  1.4 m,1 every 1 to 3 ,Lions+ spotted hyenas+ African wild dogs+ cheetahs+ leopards+ Nile crocodiles,The stripes on a zebra are unique to each zebra just like a human fingerprint
 Cape Buffalo,Near Threatened,Syncerus caffer,Herbivore,11,29.5,425 to 870,1.7 to 3.4m,??,1 every 1 to 2 ,Lions+ leopards + spotted hyena+ humans+ african wild dogs,Are actually very good swimmers
 Cheetah,Vulnerable,Acinonyx jubatus,Carnivore,6,17,21 to 72,1.1 to 1.5m,0.85m,2.1 unknown interval,Lions+ spotted hyenas+ leopards,The cheetah was semi to domesticated for the purposes of hunting in ancient Egypt
@@ -16,4 +16,4 @@ Leopard,Near Threatened,Panthera pardus pardus,Carnivore,10 to 12,21 to 23,17 to
 Lion,Vulnerable,Panthera leo,Carnivore,10,13,126 to 272,2.4 to 3.3m,1.1 to 1.2m,3 every 2 ,Humans,Their manes are believed tp indicate individual fitness
 Spotted Hyena,Least Concern,Crocuta crocuta,Carnivore,20,40,45 to 70,0.95 to 1.5m,0.75  to  1m,2 every 1  to  2 ,Lions+ humans,The hyena is more closely related to the mongoose and cat than the dog
 Vervet Monkey,Least Concern,Chlorocebus pygerythrus,Omnivore,31,??,3.5 to 6,,0.4 to 0.6m,1 every ?,??,They have cheek pouches allowing them to store food for later
-Warthog,Least Concern,Phacochoerus africanus,Omnivore,7  to 11 ,??,50 to 150,0.9  to  1.5m,,3 a year,lions+ leopards+cheetah,Have 3 types of warts on their face
+Warthog,Least Concern,Phacochoerus africanus,Omnivore,7  to 11 ,??,50 to 150,0.9  to  1.5m,??,3 a year,lions+ leopards+cheetah,Have 3 types of warts on their face
