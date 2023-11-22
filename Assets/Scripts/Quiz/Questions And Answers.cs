@@ -20,7 +20,7 @@ public class QuestionsAndAnswers : MonoBehaviour
 
     public int setUp()
     {
-        Answers = new string[] { "A", "B", "C", "D" };
+        Answers = new string[] { "A", "A", "A", "A" };
         readCSV();
         string animalInteracted = PlayerPrefs.GetString("Animal");
 
@@ -35,7 +35,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         }
    
         //find 3 non related animals to deceive
-        List<int> possibleIndices = Enumerable.Range(0, myAnimalFactsList.Count).ToList();
+        List<int> possibleIndices = Enumerable.Range(1, myAnimalFactsList.Count).ToList();
         possibleIndices.Remove(indexNeeded);
         System.Random random = new System.Random();
         int[] incorrectAnimals = (possibleIndices)
@@ -93,9 +93,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         int wrongAniDone = 0;
         string attributeName = myAttributes[QuestionToAsk];
         FieldInfo field = typeof(AnimalAns).GetField(attributeName);
-        Debug.Log(attributeName);
-        Debug.Log(field);
-
+        
         //fills up all 4 answers
         for (int i = 0; i < 4; i++)
         {    
@@ -110,8 +108,12 @@ public class QuestionsAndAnswers : MonoBehaviour
             {
                 //puts wrong answers in extra answer spots
                 object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
-                Answers[i] = attributeValue?.ToString();
-                wrongAniDone ++;
+                if (!(Answers.Contains(attributeValue.ToString())))
+                {
+                    Answers[i] = attributeValue?.ToString();
+                    wrongAniDone++;
+                }    
+                           
             }
         }
         return CorrectAnswer;

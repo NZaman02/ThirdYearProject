@@ -44,7 +44,15 @@ public class QuizManager : MonoBehaviour
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA.Answers[i];
+            if (QnA.Answers[i] != "A")
+            {
+                options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = QnA.Answers[i];
+            }
+            else
+            {
+                options[i].SetActive(false); // Set the button inactive because choice not available
+
+            }
         }
         options[correctButton].GetComponent<AnswerScript>().isCorrect = true;
         animalNameText.text = PlayerPrefs.GetString("Animal");
