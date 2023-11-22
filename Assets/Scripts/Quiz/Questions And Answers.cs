@@ -61,6 +61,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         //choses a question to ask from available
         int QuestionToAsk = UnityEngine.Random.Range(1, QuestionsAvailable[questionsToPick - 1]);
         //set question
+        Debug.Log(QuestionToAsk);
         switch (QuestionToAsk)
         {
             case 1:
@@ -138,15 +139,19 @@ public class QuestionsAndAnswers : MonoBehaviour
                 {
                     //puts wrong answers in extra answer spots
                     object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
+                    Debug.Log(attributeValue?.ToString());
                     if (!(Answers.Contains(attributeValue.ToString())))
                     {
                         Answers[i] = attributeValue?.ToString();
+                        Debug.Log("Y");
+
                         wrongAniDone++;
                     }
                 }                       
 
             }
         }
+        Debug.Log(string.Join(", ", Answers));
         return CorrectAnswer;
     }
 
