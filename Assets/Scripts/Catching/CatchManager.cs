@@ -5,23 +5,26 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Xml.Serialization;
+using System.IO;
+using System;
 
 public class CatchManager : MonoBehaviour
 {
     //set ui
-    public TMP_Text dice1, dice2, bonus, amountNeeded, finalAmount, currentAnimalText;
+    public TMP_Text dice1, dice2, bonus, amountNeeded, finalAmount, currentAnimalText, result;
     private int dice1Val, dice2Val, bonusVal, amountNeededVal;
     public Button continueButton;
     private string currentAnimal;
 
     //update knowledge
-    public TextAsset playerKnowledgeText;
-
     private bool correctAns;
+    string filename = "";
+    public TextAsset playerKnowledge;
 
     // Start is called before the first frame update
     void Start()
     {
+
         //set up catching context
         continueButton.onClick.AddListener(LoadSceneOnClick);
         continueButton.gameObject.SetActive(false);
@@ -52,7 +55,7 @@ public class CatchManager : MonoBehaviour
         finalAmount.text = finalAmountVal.ToString();
         currentAnimalText.text = currentAnimal;
 
-        if(finalAmountVal > amountNeededVal) 
+        if (finalAmountVal > amountNeededVal) 
         {
             Caught();
         }
@@ -67,14 +70,48 @@ public class CatchManager : MonoBehaviour
 
     private void Caught()
     {
+        //feedback catch
         continueButton.gameObject.SetActive(true);
+        result.text = "CAUGHT";
 
+        //work out current player knowledge
+        string[] knowledgeData = playerKnowledge.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+        int numOfAnimal = knowledgeData.Length;
+        int indexToUpdate = 0;
+
+        List<string> animalNames = new List<string>();
+        List<string> playerLevels = new List<string>();
+
+        //read and update score
+        for (int i = 0; i < numOfAnimal; i += 2)
+        {
+            animalNames.Add(knowledgeData[i]);
+            playerLevels.Add(knowledgeData[i + 1]);
+            if (knowledgeData[i] == currentAnimal)
+            {
+                playerLevels[i]  (int.Parse(playerLevels[i]) + 1).ToString();
+
+            }
+
+        }
+
+        //can now write back to file
+        string filename = Path.Combine(Application.persistentDataPath, "Databases/a.csv");
+        TextWriter tw = new StreamWriter(filename,false);
+        for(int i = 0;i < numOfAnimal; i += 2)
+        {
+            tw.WriteLine(animalNames[i] + "," + playerLevels[i]);
+        }
+        tw.Close();
+         
+    
     }
 
 
     private void NotCaught()
     {
         continueButton.gameObject.SetActive(true);
+        result.text = "FAILED";
 
     }
 
