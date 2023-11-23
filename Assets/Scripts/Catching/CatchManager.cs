@@ -18,7 +18,6 @@ public class CatchManager : MonoBehaviour
 
     //update knowledge
     private bool correctAns;
-    string filename = "";
     public TextAsset playerKnowledge;
 
     // Start is called before the first frame update
@@ -73,11 +72,12 @@ public class CatchManager : MonoBehaviour
         //feedback catch
         continueButton.gameObject.SetActive(true);
         result.text = "CAUGHT";
-
+        Debug.Log("YO");
         //work out current player knowledge
+        string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
+        //string[] knowledgeData = File.ReadAllLines(filePath);
         string[] knowledgeData = playerKnowledge.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
         int numOfAnimal = knowledgeData.Length;
-        int indexToUpdate = 0;
 
         List<string> animalNames = new List<string>();
         List<string> playerLevels = new List<string>();
@@ -89,15 +89,14 @@ public class CatchManager : MonoBehaviour
             playerLevels.Add(knowledgeData[i + 1]);
             if (knowledgeData[i] == currentAnimal)
             {
-                playerLevels[i]  (int.Parse(playerLevels[i]) + 1).ToString();
+                playerLevels[i] =  (int.Parse(playerLevels[i]) + 1).ToString();
 
             }
 
         }
 
         //can now write back to file
-        string filename = Path.Combine(Application.persistentDataPath, "Databases/a.csv");
-        TextWriter tw = new StreamWriter(filename,false);
+        TextWriter tw = new StreamWriter(filePath,false);
         for(int i = 0;i < numOfAnimal; i += 2)
         {
             tw.WriteLine(animalNames[i] + "," + playerLevels[i]);
