@@ -72,38 +72,40 @@ public class CatchManager : MonoBehaviour
         //feedback catch
         continueButton.gameObject.SetActive(true);
         result.text = "CAUGHT";
-        Debug.Log("YO");
         //work out current player knowledge
         string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
         //string[] knowledgeData = File.ReadAllLines(filePath);
+       
+        
         string[] knowledgeData = playerKnowledge.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
         int numOfAnimal = knowledgeData.Length;
-
         List<string> animalNames = new List<string>();
         List<string> playerLevels = new List<string>();
 
-        //read and update score
-        for (int i = 0; i < numOfAnimal; i += 2)
+        //read and score
+        for (int i = 0; i < numOfAnimal-1; i +=2)
         {
-            animalNames.Add(knowledgeData[i]);
-            playerLevels.Add(knowledgeData[i + 1]);
-            if (knowledgeData[i] == currentAnimal)
+            animalNames.Add(knowledgeData[i].ToString());
+            playerLevels.Add(knowledgeData[i + 1].ToString());
+        }
+
+        // update
+        for (int i = 0; i < (numOfAnimal - 1)/2; i ++)
+        {
+            if (animalNames[i] == currentAnimal)
             {
-                playerLevels[i] =  (int.Parse(playerLevels[i]) + 1).ToString();
-
+                playerLevels[i] = (int.Parse(playerLevels[i]) + 1).ToString();
             }
-
         }
 
         //can now write back to file
-        TextWriter tw = new StreamWriter(filePath,false);
-        for(int i = 0;i < numOfAnimal; i += 2)
+        TextWriter tw = new StreamWriter(filePath, false);
+        for (int i = 0; i < (numOfAnimal - 1)/2; i ++)
         {
-            tw.WriteLine(animalNames[i] + "," + playerLevels[i]);
+            tw.WriteLine(animalNames[i] + "," + playerLevels[i] + "\n");
         }
         tw.Close();
-         
-    
+        Debug.Log("File written to: " + filePath);
     }
 
 
