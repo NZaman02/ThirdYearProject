@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnswerScript : MonoBehaviour
 {
 
-    public bool isCorrect = false;
+    public bool isCorrect;
     public QuizManager quizManager;
 
    public void Answer()

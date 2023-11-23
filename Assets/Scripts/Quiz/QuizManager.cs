@@ -23,8 +23,6 @@ public class QuizManager : MonoBehaviour
     {
         continueButton.onClick.AddListener(LoadSceneOnClick);
         continueButton.gameObject.SetActive(false);
-
-
         correctButton = QnA.setUp();
 
         generateQuestion();
@@ -32,6 +30,8 @@ public class QuizManager : MonoBehaviour
 
     public void correct()
     {
+        PlayerPrefs.SetInt("Answer", 1);
+        PlayerPrefs.Save();
         for (int i = 0; i < options.Length; i++)
         {
             if (i == correctButton)
@@ -49,13 +49,16 @@ public class QuizManager : MonoBehaviour
 
 
         }
-
         continueButton.gameObject.SetActive(true);
+       
     }
 
     public void wrong()
     {
-        for(int i = 0; i < options.Length; i++)
+        PlayerPrefs.SetInt("Answer", 0);
+        PlayerPrefs.Save();
+
+        for (int i = 0; i < options.Length; i++)
         {
             if (i == correctButton)
             {
@@ -81,15 +84,14 @@ public class QuizManager : MonoBehaviour
             buttonList[i].interactable = false;
 
         }
-
         continueButton.gameObject.SetActive(true);
-
+       
     }
 
     private void LoadSceneOnClick()
     {
-        string sceneName = PlayerPrefs.GetString("PrevScene");
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Catch Animal");
+
     }
 
     void generateQuestion()

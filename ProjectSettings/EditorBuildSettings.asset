@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AnimalCard.unity
     guid: 505aa1ac819268a4899cb0083dc40bf1
+  - enabled: 1
+    path: Assets/Scenes/Catch Animal.unity
+    guid: 682431b3d93f6564bbab9f996445a527
   m_configObjects: {}

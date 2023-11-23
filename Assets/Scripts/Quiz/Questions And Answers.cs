@@ -143,8 +143,6 @@ public class QuestionsAndAnswers : MonoBehaviour
                     if (!(Answers.Contains(attributeValue.ToString())))
                     {
                         Answers[i] = attributeValue?.ToString();
-                        Debug.Log("Y");
-
                         wrongAniDone++;
                     }
                 }                       
