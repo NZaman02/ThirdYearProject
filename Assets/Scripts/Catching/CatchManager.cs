@@ -81,10 +81,6 @@ public class CatchManager : MonoBehaviour
         {
             string[] values = line.Split(',');
 
-            // Log each value separately
-            Debug.Log("Animal: " + values[0]);
-            Debug.Log("Player Level: " + values[1]);
-
             animalNames.Add(values[0]);
             playerLevels.Add(values[1]);
         }
