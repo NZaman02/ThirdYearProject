@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,14 +34,14 @@ public class FillCard : MonoBehaviour
         string animalName = PlayerPrefs.GetString("Animal");
         int playerKnowledgeLevel = 0;
 
-        string[] knowledgeData = knowledgeText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-        int numOfAnimal1 = knowledgeData.Length;
-        for (int i = 0; i < numOfAnimal1; i += 2)
+        string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
+        string[] knowledgeData = File.ReadAllLines(filePath);
+        foreach (string line in knowledgeData)
         {
-
-            if (knowledgeData[i] == animalName)
+            string[] values = line.Split(',');
+            if (values[0] == animalName)
             {
-                playerKnowledgeLevel = int.Parse(knowledgeData[i + 1]);
+                playerKnowledgeLevel = int.Parse(values[1]);
                 break;
             }
         }

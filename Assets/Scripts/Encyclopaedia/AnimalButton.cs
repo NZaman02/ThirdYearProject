@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 
 public class AnimalButton : MonoBehaviour
@@ -24,6 +25,7 @@ public class AnimalButton : MonoBehaviour
         nameText.text = data.name;
 
         string imagePath = $"Assets/Sprites/Animals/{data.name}.png";
+
         Texture2D texture = LoadTexture(imagePath);
 
         if (texture != null)
@@ -32,13 +34,17 @@ public class AnimalButton : MonoBehaviour
             animalImage.sprite = animalSprite;
         }
 
-        string[] knowledgeData = playerKnowledge.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-        int numOfAnimal = knowledgeData.Length;
-        for (int i = 0; i < numOfAnimal; i += 2)
+        string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
+        string[] knowledgeData = File.ReadAllLines(filePath);
+
+       
+        foreach (string line in knowledgeData)
         {
-            if (knowledgeData[i] == data.name)
+            string[] values = line.Split(',');
+
+            if (values[0] == data.name)
             {
-                starNum = int.Parse(knowledgeData[i + 1]);         
+                starNum = int.Parse(values[1]);
                 break;
             }
         }
