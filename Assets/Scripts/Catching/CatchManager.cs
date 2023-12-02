@@ -11,21 +11,19 @@ using System;
 public class CatchManager : MonoBehaviour
 {
     //set ui
-    public TMP_Text dice1, dice2, bonus, amountNeeded, finalAmount, currentAnimalText, result;
+    public TMP_Text dice1, dice2, bonus, amountNeeded, finalAmount, currentAnimalText, result, continueText;
     private int dice1Val, dice2Val, bonusVal, amountNeededVal;
     public Button continueButton;
     private string currentAnimal;
 
     //update knowledge
     private bool correctAns;
-    public TextAsset playerKnowledge;
 
     // Start is called before the first frame update
     void Start()
     {
 
         //set up catching context
-        continueButton.onClick.AddListener(LoadSceneOnClick);
         continueButton.gameObject.SetActive(false);
         currentAnimal = PlayerPrefs.GetString("Animal");
         correctAns = PlayerPrefs.GetInt("Answer") == 1;
@@ -54,7 +52,7 @@ public class CatchManager : MonoBehaviour
         finalAmount.text = finalAmountVal.ToString();
         currentAnimalText.text = currentAnimal;
 
-        if (finalAmountVal > amountNeededVal) 
+        if (finalAmountVal >= amountNeededVal) 
         {
             Caught();
         }
@@ -62,8 +60,6 @@ public class CatchManager : MonoBehaviour
         {
             NotCaught();
         }
-
-
 
     }
 
@@ -74,51 +70,67 @@ public class CatchManager : MonoBehaviour
         result.text = "CAUGHT";
         //work out current player knowledge
         string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
-        //string[] knowledgeData = File.ReadAllLines(filePath);
-       
-        
-        string[] knowledgeData = playerKnowledge.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-        int numOfAnimal = knowledgeData.Length;
+        string[] knowledgeData = File.ReadAllLines(filePath);
+
+
         List<string> animalNames = new List<string>();
         List<string> playerLevels = new List<string>();
 
         //read and score
-        for (int i = 0; i < numOfAnimal-1; i +=2)
+        foreach (string line in knowledgeData)
         {
-            animalNames.Add(knowledgeData[i].ToString());
-            playerLevels.Add(knowledgeData[i + 1].ToString());
+            string[] values = line.Split(',');
+
+            // Log each value separately
+            Debug.Log("Animal: " + values[0]);
+            Debug.Log("Player Level: " + values[1]);
+
+            animalNames.Add(values[0]);
+            playerLevels.Add(values[1]);
         }
 
         // update
-        for (int i = 0; i < (numOfAnimal - 1)/2; i ++)
+        for (int i = 0; i < animalNames.Count; i ++)
         {
             if (animalNames[i] == currentAnimal)
             {
-                playerLevels[i] = (int.Parse(playerLevels[i]) + 1).ToString();
+                //sets max level
+                if (int.Parse(playerLevels[i]) < 5)
+                {
+                    playerLevels[i] = (int.Parse(playerLevels[i]) + 1).ToString();
+                }
             }
         }
 
         //can now write back to file
         TextWriter tw = new StreamWriter(filePath, false);
-        for (int i = 0; i < (numOfAnimal - 1)/2; i ++)
+        for (int i = 0; i < animalNames.Count; i ++)
         {
-            tw.WriteLine(animalNames[i] + "," + playerLevels[i] + "\n");
+            tw.WriteLine(animalNames[i] + "," + playerLevels[i]);
         }
         tw.Close();
-        Debug.Log("File written to: " + filePath);
+        continueButton.onClick.AddListener(LoadCardSceneOnClick);
+        continueText.text = "See New Information Unlock";
     }
 
 
     private void NotCaught()
     {
+        continueButton.onClick.AddListener(LoadOpenSceneOnClick);
         continueButton.gameObject.SetActive(true);
         result.text = "FAILED";
-
+        continueText.text = "Return To Open World";
     }
 
-    private void LoadSceneOnClick()
+    private void LoadOpenSceneOnClick()
     {
         string sceneName = PlayerPrefs.GetString("PrevScene");
         SceneManager.LoadScene(sceneName);
     }
+
+    private void LoadCardSceneOnClick()
+    {
+        SceneManager.LoadScene("AnimalCard");
+    }
 }
+

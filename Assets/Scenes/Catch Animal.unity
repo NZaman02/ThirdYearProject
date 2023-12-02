@@ -295,8 +295,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 414}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 162, y: 397.45}
+  m_SizeDelta: {x: 557.6949, y: 95.5886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &131504957
 CanvasRenderer:
@@ -353,14 +353,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1319,10 +1319,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1774,6 +1774,7 @@ MonoBehaviour:
   finalAmount: {fileID: 2060083814}
   currentAnimalText: {fileID: 131504958}
   result: {fileID: 1654395321}
+  continueText: {fileID: 1682650302}
   continueButton: {fileID: 2087339247}
   playerKnowledge: {fileID: 4900000, guid: 9b9897a52375c9d4198a417f96ba0783, type: 3}
 --- !u!1 &2060083812
@@ -2162,8 +2163,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -751, y: 414}
-  m_SizeDelta: {x: 173.5366, y: 62.4877}
+  m_AnchoredPosition: {x: -637.38, y: 374.7768}
+  m_SizeDelta: {x: 400.77, y: 140.9341}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

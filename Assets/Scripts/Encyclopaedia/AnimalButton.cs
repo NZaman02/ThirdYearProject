@@ -37,7 +37,6 @@ public class AnimalButton : MonoBehaviour
         string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
         string[] knowledgeData = File.ReadAllLines(filePath);
 
-       
         foreach (string line in knowledgeData)
         {
             string[] values = line.Split(',');
