@@ -5,13 +5,18 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public float FollowSpeed = 2f;
-    public Transform target;
+    private Transform target;
     public float minZoom = 2f;
     public float maxZoom = 10f;
     public float zoomSpeed = 5f;
     private float zoomInput = 0f;
 
+    private void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        target = player.transform;
 
+    }
 
     // Update is called once per frame
     void Update()
