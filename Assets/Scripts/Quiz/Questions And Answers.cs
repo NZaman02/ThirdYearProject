@@ -1,12 +1,9 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Xml.Serialization;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class QuestionsAndAnswers : MonoBehaviour
 {
@@ -43,33 +40,29 @@ public class QuestionsAndAnswers : MonoBehaviour
         int[] incorrectAnimals = (possibleIndices)
                          .OrderBy(_ => random.Next())
                          .Take(3)
-                         .ToArray();
-
-
-      
+                         .ToArray();    
 
         //working out what questions can be asked
-        int[] QuestionsAvailable = { 2, 5, 8, 10 };
+        int[] QuestionsAvailable = { 2, 5, 8, 10, 10 };
         string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
         string[] knowledgeData = File.ReadAllLines(filePath);
 
-        int numOfAnimal1 = knowledgeData.Length;
         int questionsToPick = 1;
+        
         foreach (string line in knowledgeData)
         {
             string[] values = line.Split(',');
             if (values[0] == animalInteracted)
             {
                 questionsToPick = int.Parse(values[1]);
-                
                 break;
             }
         }
-         
+       
         //choses a question to ask from available
         int QuestionToAsk = UnityEngine.Random.Range(1, QuestionsAvailable[questionsToPick - 1]);
+        QuestionToAsk = 1;
         //set question
-         
         switch (QuestionToAsk)
         {
             case 1:
@@ -104,6 +97,7 @@ public class QuestionsAndAnswers : MonoBehaviour
                 break;
         }
 
+        
         string[] myAttributes = { "name", "endangeredStatus", "latinName", "diet", "wildAge", "captivAge", "weight", "anLength", "anheight", "offspringNum", "predators" };
 
         //place right answers and wrong answers 
@@ -124,11 +118,14 @@ public class QuestionsAndAnswers : MonoBehaviour
         //fills up all 4 answers
         for (int i = 0; i < 4; i++)
         {
+
+            Debug.Log(i);
         //puts away right answer in correct answer spot
             if (i == CorrectAnswer)
             {
                 object attributeValue = field.GetValue(myAnimalFactsList[indexNeeded]);
                 Answers[i] = attributeValue?.ToString();
+                Debug.Log("1A");
             }
             else
                 {
@@ -147,15 +144,23 @@ public class QuestionsAndAnswers : MonoBehaviour
                 {
                     //puts wrong answers in extra answer spots
                     object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
-                    if (!(Answers.Contains(attributeValue.ToString())))
+                    Debug.Log(String.Join(",", Answers));
+                    Debug.Log(attributeValue?.ToString());
+                    //checks not already in or is a duplicate of answer
+                    if (!(Answers.Contains(attributeValue.ToString())) && !(attributeValue?.ToString() == field.GetValue(myAnimalFactsList[indexNeeded])?.ToString())   )
                     {
                         Answers[i] = attributeValue?.ToString();
                         wrongAniDone++;
+                        Debug.Log("2B");
                     }
                 }
 
+
             }
+
         }
+        Debug.Log(String.Join(",", Answers));
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAA");
         return CorrectAnswer;
         
     }

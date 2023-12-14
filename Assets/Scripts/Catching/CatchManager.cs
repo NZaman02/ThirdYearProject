@@ -99,15 +99,22 @@ public class CatchManager : MonoBehaviour
         }
 
         // update
+        bool finAnimal = false; 
         for (int i = 0; i < animalNames.Count; i ++)
         {
             if (animalNames[i] == currentAnimal)
             {
+                if ((int.Parse(playerLevels[i])) == 5) 
+                {
+                    finAnimal = true;
+                }
+
                 //sets max level
                 if (int.Parse(playerLevels[i]) < 5)
                 {
                     playerLevels[i] = (int.Parse(playerLevels[i]) + 1).ToString();
                 }
+              
             }
         }
 
@@ -118,8 +125,18 @@ public class CatchManager : MonoBehaviour
             tw.WriteLine(animalNames[i] + "," + playerLevels[i]);
         }
         tw.Close();
-        continueButton.onClick.AddListener(LoadCardSceneOnClick);
-        continueText.text = "See New Information Unlock";
+
+        if (finAnimal)
+        {
+            continueButton.onClick.AddListener(LoadOpenSceneOnClick);
+            continueText.text = "Animal Already Completed";
+        }
+        else
+        {
+            continueButton.onClick.AddListener(LoadCardSceneOnClick);
+            continueText.text = "See New Information Unlock";
+        }
+       
     }
 
 
