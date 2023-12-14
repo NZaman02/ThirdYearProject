@@ -17,7 +17,7 @@ public class CatchManager : MonoBehaviour
     private string currentAnimal;
 
     //update knowledge
-    private bool correctAns;
+    private int correctAns;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +26,23 @@ public class CatchManager : MonoBehaviour
         //set up catching context
         continueButton.gameObject.SetActive(false);
         currentAnimal = PlayerPrefs.GetString("Animal");
-        correctAns = PlayerPrefs.GetInt("Answer") == 1;
+        correctAns = PlayerPrefs.GetInt("Answer");
 
 
         //set up dice mechanic 
         dice1Val = UnityEngine.Random.Range(1, 7);
         dice2Val = UnityEngine.Random.Range(1, 7);
-        if(correctAns)
+        switch (correctAns)
         {
-            bonusVal = 3;
-        }
-        else
-        {
-            bonusVal = 0;
+            case 0:
+                bonusVal = 0;
+                break;
+            case 1:
+                bonusVal = 3;
+                break;
+            case 2:
+                bonusVal = 5;
+                break;
         }
         amountNeededVal = 8;
 
@@ -50,7 +54,16 @@ public class CatchManager : MonoBehaviour
         bonus.text = bonusVal.ToString();
         amountNeeded.text = amountNeededVal.ToString();
         finalAmount.text = finalAmountVal.ToString();
-        currentAnimalText.text = currentAnimal;
+
+        if(correctAns == 2)
+        {
+            currentAnimalText.text = "First Catch For: " + currentAnimal;
+        }
+        else
+        {
+            currentAnimalText.text = currentAnimal;
+        }
+      
 
         if (finalAmountVal >= amountNeededVal) 
         {

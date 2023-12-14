@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
@@ -16,7 +18,7 @@ public class QuestionsAndAnswers : MonoBehaviour
     //read csv stuff
     public TextAsset answerBankText;
     public List<AnimalAns> myAnimalFactsList = new List<AnimalAns>();
-    public TextAsset playerKnowledgeText;
+   
 
     public int setUp()
     {
@@ -44,24 +46,30 @@ public class QuestionsAndAnswers : MonoBehaviour
                          .ToArray();
 
 
+      
+
         //working out what questions can be asked
         int[] QuestionsAvailable = { 2, 5, 8, 10 };
-        string[] knowledgeData = playerKnowledgeText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+        string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
+        string[] knowledgeData = File.ReadAllLines(filePath);
+
         int numOfAnimal1 = knowledgeData.Length;
         int questionsToPick = 1;
-        for (int i = 0; i < numOfAnimal1; i += 2)
+        foreach (string line in knowledgeData)
         {
-            if (knowledgeData[i] == animalInteracted)
+            string[] values = line.Split(',');
+            if (values[0] == animalInteracted)
             {
-                questionsToPick = int.Parse(knowledgeData[i + 1]);
+                questionsToPick = int.Parse(values[1]);
+                
                 break;
             }
         }
-
+         
         //choses a question to ask from available
         int QuestionToAsk = UnityEngine.Random.Range(1, QuestionsAvailable[questionsToPick - 1]);
         //set question
-        Debug.Log(QuestionToAsk);
+         
         switch (QuestionToAsk)
         {
             case 1:
@@ -103,11 +111,11 @@ public class QuestionsAndAnswers : MonoBehaviour
         int wrongAniDone = 0;
         string attributeName = myAttributes[QuestionToAsk];
         FieldInfo field = typeof(AnimalAns).GetField(attributeName);
-        
+
         //forces 3 answers boxes for diet q
-        string[] incorrectDiet = {"Herbivore", "Omnivore", "Carnivore", "Herbivore", "Omnivore", "Carnivore" };
+        string[] incorrectDiet = { "Herbivore", "Omnivore", "Carnivore", "Herbivore", "Omnivore", "Carnivore" };
         List<string> stringList = new List<string>(incorrectDiet);
-        if(QuestionToAsk == 3)
+        if (QuestionToAsk == 3)
         {
             stringList.Remove(myAnimalFactsList[indexNeeded].ToString());
             incorrectDiet = stringList.ToArray();
@@ -116,20 +124,20 @@ public class QuestionsAndAnswers : MonoBehaviour
         //fills up all 4 answers
         for (int i = 0; i < 4; i++)
         {
-            //puts away right answer in correct answer spot
+        //puts away right answer in correct answer spot
             if (i == CorrectAnswer)
             {
                 object attributeValue = field.GetValue(myAnimalFactsList[indexNeeded]);
                 Answers[i] = attributeValue?.ToString();
             }
             else
-            {
-                if(QuestionToAsk == 3)
+                {
+                if (QuestionToAsk == 3)
                 {
                     //if diet situation
                     string correctAns = field.GetValue(myAnimalFactsList[indexNeeded]).ToString();
                     //if not already added/ correct answer so no duplicates
-                    if (!(Array.Exists(Answers, element => element == incorrectDiet[wrongAniDone])) && !(string.Equals(incorrectDiet[wrongAniDone],correctAns, StringComparison.Ordinal)))
+                    if (!(Array.Exists(Answers, element => element == incorrectDiet[wrongAniDone])) && !(string.Equals(incorrectDiet[wrongAniDone], correctAns, StringComparison.Ordinal)))
                     {
                         Answers[i] = incorrectDiet[wrongAniDone];
                     }
@@ -139,18 +147,17 @@ public class QuestionsAndAnswers : MonoBehaviour
                 {
                     //puts wrong answers in extra answer spots
                     object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
-                    Debug.Log(attributeValue?.ToString());
                     if (!(Answers.Contains(attributeValue.ToString())))
                     {
                         Answers[i] = attributeValue?.ToString();
                         wrongAniDone++;
                     }
-                }                       
+                }
 
             }
         }
-        Debug.Log(string.Join(", ", Answers));
         return CorrectAnswer;
+        
     }
 
     public void readCSV()
@@ -183,6 +190,8 @@ public class QuestionsAndAnswers : MonoBehaviour
             myAnimalFactsList.Add(newAnimal);
         }
 
-
+        
     }
+
+
 }

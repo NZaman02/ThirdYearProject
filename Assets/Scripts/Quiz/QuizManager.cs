@@ -24,8 +24,9 @@ public class QuizManager : MonoBehaviour
         continueButton.onClick.AddListener(LoadSceneOnClick);
         continueButton.gameObject.SetActive(false);
         correctButton = QnA.setUp();
-
         generateQuestion();
+        
+      
     }
 
     public void correct()
