@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class QuestionsAndAnswers : MonoBehaviour
@@ -61,7 +62,7 @@ public class QuestionsAndAnswers : MonoBehaviour
        
         //choses a question to ask from available
         int QuestionToAsk = UnityEngine.Random.Range(1, QuestionsAvailable[questionsToPick - 1]);
-        QuestionToAsk = 1;
+  
         //set question
         switch (QuestionToAsk)
         {
@@ -118,14 +119,12 @@ public class QuestionsAndAnswers : MonoBehaviour
         //fills up all 4 answers
         for (int i = 0; i < 4; i++)
         {
-
-            Debug.Log(i);
         //puts away right answer in correct answer spot
             if (i == CorrectAnswer)
             {
                 object attributeValue = field.GetValue(myAnimalFactsList[indexNeeded]);
                 Answers[i] = attributeValue?.ToString();
-                Debug.Log("1A");
+           
             }
             else
                 {
@@ -144,14 +143,21 @@ public class QuestionsAndAnswers : MonoBehaviour
                 {
                     //puts wrong answers in extra answer spots
                     object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
-                    Debug.Log(String.Join(",", Answers));
-                    Debug.Log(attributeValue?.ToString());
+                 
+
                     //checks not already in or is a duplicate of answer
                     if (!(Answers.Contains(attributeValue.ToString())) && !(attributeValue?.ToString() == field.GetValue(myAnimalFactsList[indexNeeded])?.ToString())   )
                     {
                         Answers[i] = attributeValue?.ToString();
                         wrongAniDone++;
-                        Debug.Log("2B");
+                   
+
+                    }
+                    else
+                    {
+                        //keeps trying to find a false answer to use
+                        Answers[i] = wrongAnswersMaker(field.GetValue(myAnimalFactsList[indexNeeded])?.ToString(), Answers, possibleIndices, field);
+                        wrongAniDone++;
                     }
                 }
 
@@ -159,10 +165,28 @@ public class QuestionsAndAnswers : MonoBehaviour
             }
 
         }
-        Debug.Log(String.Join(",", Answers));
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAA");
+
         return CorrectAnswer;
         
+    }
+
+    //need to check what correct ans was, whats already used ,what field is being asked, what animals can be chosen ,what the q is 
+    public string wrongAnswersMaker(string correctAnswer, string[] currentlyUsed, List<int> animalChoices, FieldInfo attributeName)
+    {
+        bool looping = true;
+        string ourChoice = "";
+        while (looping)
+        {
+            int randomAnimal = UnityEngine.Random.Range(0, animalChoices.Count);
+            ourChoice = (attributeName.GetValue(myAnimalFactsList[randomAnimal]))?.ToString();
+            //makes sure wrong ans not already used
+          if( !(currentlyUsed.Contains(ourChoice) && !(correctAnswer == ourChoice))) 
+            {
+                looping = false;
+            }
+
+        }
+        return ourChoice;
     }
 
     public void readCSV()
