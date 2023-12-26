@@ -7,12 +7,13 @@ public class LevelTrigger : MonoBehaviour
 {
 
     public string SceneDestination;
+    public string CurrentScene;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            DontDestroyOnLoad(collision.gameObject);
+            PlayerPrefs.SetString("PrevScene", CurrentScene);
             SceneManager.LoadScene(SceneDestination, LoadSceneMode.Single);
         }
     }
