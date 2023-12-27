@@ -6,25 +6,26 @@ using UnityEngine.UIElements;
 
 public class CreatePlayer : MonoBehaviour
 {
-    public GameObject player;
     public string currentBiome;
     private CameraFollow cameraFollow;
     public GameObject cameraObject;
-
+    private string prevScene;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnPlayer(currentBiome);
+
     }
 
-    private void spawnPlayer(string theCurrentBiome)
+    public void spawnPlayer(string theCurrentBiome)
     {
-        string prevScene = PlayerPrefs.GetString("PrevScene");
+        GameObject player = GameObject.FindWithTag("Player");
+
+        prevScene = PlayerPrefs.GetString("PrevScene");
         Debug.Log("Curr");
         Debug.Log(theCurrentBiome);
         Debug.Log("Old");
-        Debug.Log(PlayerPrefs.GetString("PrevScene"));
+        Debug.Log(prevScene);
         switch (theCurrentBiome)
         {
             case "Woodlands":
@@ -36,7 +37,8 @@ public class CreatePlayer : MonoBehaviour
                         break;
                     case "Savanna":
                         spawnPosition = new Vector3(-60f, 20.0f, 1f);
-                        player.transform.position = spawnPosition; break;
+                        player.transform.position = spawnPosition;
+                        break;
                     case "Grasslands":
                         spawnPosition = new Vector3(-73f, 2.0f, 1f);
                         player.transform.position = spawnPosition; 
@@ -65,6 +67,7 @@ public class CreatePlayer : MonoBehaviour
                          player.transform.position = spawnPosition;
                         break;
                     case "Woodlands":
+                        Debug.Log("A");
                         spawnPosition = new Vector3(-30f, 15f, 1f);
                         player.transform.position = spawnPosition;
                         break;

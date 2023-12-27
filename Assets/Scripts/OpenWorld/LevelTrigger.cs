@@ -14,8 +14,9 @@ public class LevelTrigger : MonoBehaviour
         if (collision.tag == "Player")
         {
             PlayerPrefs.SetString("PrevScene", CurrentScene);
-            Debug.Log(PlayerPrefs.GetString("PrevScene"));
             SceneManager.LoadScene(SceneDestination, LoadSceneMode.Single);
+            CreatePlayer spawner = new CreatePlayer();
+            spawner.spawnPlayer(SceneDestination);
         }
     }
 }
