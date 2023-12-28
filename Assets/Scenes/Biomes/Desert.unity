@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &13925874
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1974728911395935039, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_Name
+      value: AnimalSpawner NW
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.9556236
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7064886
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.042255785
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1792562353}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: animalPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: animalPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8328723876185770976, guid: dd96a230be5567443880e236339b8ee5, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
 --- !u!1 &373098585
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +910,75 @@ Transform:
   - {fileID: 478483830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1063799936
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1974728911395935039, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_Name
+      value: AnimalSpawner SE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 38.69829
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.343042
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.042255785
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1792562353}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: animalPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: animalPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8328723876185770976, guid: 26ceffb72ff96aa49be13cd386eb695c, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
 --- !u!1 &1075324782
 GameObject:
   m_ObjectHideFlags: 0
@@ -25176,6 +25314,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2146651966056673, guid: 55faad7d278e20941af55ecec29e3602, type: 3}
   m_PrefabInstance: {fileID: 1792562351}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1792562353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3329200066865687874, guid: 55faad7d278e20941af55ecec29e3602, type: 3}
+  m_PrefabInstance: {fileID: 1792562351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1821335479
 GameObject:
   m_ObjectHideFlags: 0
@@ -25709,3 +25852,5 @@ SceneRoots:
   - {fileID: 1792562351}
   - {fileID: 1775012646}
   - {fileID: 1400347942}
+  - {fileID: 13925874}
+  - {fileID: 1063799936}
