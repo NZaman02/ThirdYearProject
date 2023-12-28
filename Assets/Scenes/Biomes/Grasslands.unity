@@ -69132,6 +69132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneDestination: Savanna
   CurrentScene: Grasslands
+  sceneManager: {fileID: 1912020037}
 --- !u!61 &228101339
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69185,12 +69186,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228101337}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: 50, z: -10.1002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 233725950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &233725948
 GameObject:
@@ -69236,6 +69237,10 @@ Transform:
   m_Children:
   - {fileID: 655207919}
   - {fileID: 8128158}
+  - {fileID: 1561066072}
+  - {fileID: 888934200}
+  - {fileID: 730070893}
+  - {fileID: 228101340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -72421,6 +72426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneDestination: Savanna
   CurrentScene: Grasslands
+  sceneManager: {fileID: 1912020037}
 --- !u!61 &730070892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72474,12 +72480,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730070890}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 20, z: -10.1002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 233725950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &816029747
 GameObject:
@@ -72586,6 +72592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneDestination: Coast
   CurrentScene: Grasslands
+  sceneManager: {fileID: 1912020037}
 --- !u!61 &888934199
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72639,12 +72646,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888934197}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: -15, z: -10.1002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 233725950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344748186
 GameObject:
@@ -73027,12 +73034,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561066070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -35.5, y: 16.606907, z: -10.1002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 233725950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1561066073
 MonoBehaviour:
@@ -73048,6 +73055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneDestination: Woodlands
   CurrentScene: Grasslands
+  sceneManager: {fileID: 1912020037}
 --- !u!1 &1829290352
 GameObject:
   m_ObjectHideFlags: 0
@@ -73242,9 +73250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b53627036ca4474dbbbcd1397260404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8890607588871515094}
   currentBiome: Grasslands
   cameraObject: {fileID: 519420028}
+  playerPrefab: {fileID: 8890607588871515094}
 --- !u!1 &1927451759
 GameObject:
   m_ObjectHideFlags: 0
@@ -73673,11 +73681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3329200066865687874, guid: 55faad7d278e20941af55ecec29e3602, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.98
+      value: -30.59
       objectReference: {fileID: 0}
     - target: {fileID: 3329200066865687874, guid: 55faad7d278e20941af55ecec29e3602, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2024
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 3329200066865687874, guid: 55faad7d278e20941af55ecec29e3602, type: 3}
       propertyPath: m_LocalPosition.z
@@ -73736,7 +73744,3 @@ SceneRoots:
   - {fileID: 1344748190}
   - {fileID: 816029750}
   - {fileID: 1912020039}
-  - {fileID: 1561066072}
-  - {fileID: 888934200}
-  - {fileID: 730070893}
-  - {fileID: 228101340}

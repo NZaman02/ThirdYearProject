@@ -8,24 +8,20 @@ public class CreatePlayer : MonoBehaviour
 {
     public string currentBiome;
     private CameraFollow cameraFollow;
-    public GameObject cameraObject;
+    public GameObject cameraObject, playerPrefab;
     private string prevScene;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        spawnPlayer(currentBiome);
     }
 
     public void spawnPlayer(string theCurrentBiome)
     {
         GameObject player = GameObject.FindWithTag("Player");
+        prevScene = PlayerPrefs.GetString("CameFrom");
 
-        prevScene = PlayerPrefs.GetString("PrevScene");
-        Debug.Log("Curr");
-        Debug.Log(theCurrentBiome);
-        Debug.Log("Old");
-        Debug.Log(prevScene);
         switch (theCurrentBiome)
         {
             case "Woodlands":
@@ -36,13 +32,13 @@ public class CreatePlayer : MonoBehaviour
                         player.transform.position = spawnPosition; 
                         break;
                     case "Savanna":
-                        spawnPosition = new Vector3(-60f, 20.0f, 1f);
+                        spawnPosition = new Vector3(60f, 20.0f, 1f);
                         player.transform.position = spawnPosition;
                         break;
                     case "Grasslands":
-                        spawnPosition = new Vector3(-73f, 2.0f, 1f);
-                        player.transform.position = spawnPosition; 
-                        Debug.Log("A");
+                        Debug.Log(player.transform.position);
+                        spawnPosition = new Vector3(73f, 2.0f, 1f);
+                        player.transform.position = spawnPosition;
                         break;
                     case "Coast":
                         spawnPosition = new Vector3(2f, 35.0f, 1f);
@@ -79,7 +75,7 @@ public class CreatePlayer : MonoBehaviour
                 {
                     case "Desert":
                         Vector3 spawnPosition = new Vector3(-12f, 7f, 1f);
-                        GameObject spawnedPrefab = Instantiate(player, spawnPosition, Quaternion.identity);
+                        player.transform.position = spawnPosition;
                         break;
                     case "Grasslands":
                         spawnPosition = new Vector3(31f, -4f, 1f);

@@ -10,9 +10,11 @@ public class CameraFollow : MonoBehaviour
     public float maxZoom = 10f;
     public float zoomSpeed = 5f;
     private float zoomInput = 0f;
+   
 
     private void Start()
     {
+     
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         target = player.transform;
 
@@ -21,20 +23,23 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPos  = new Vector3(target.position.x, target.position.y, -10f);
-        transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
-
        
-        if (Input.GetKey(KeyCode.O))
-        {
-            zoomInput = 1f;
-        }
-        else if (Input.GetKey(KeyCode.P))
-        {
-            zoomInput = -1f;
-        }
 
-        ZoomCamera(zoomInput);
+            Vector3 newPos = new Vector3(target.position.x, target.position.y, -10f);
+            transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
+
+
+            if (Input.GetKey(KeyCode.O))
+            {
+                zoomInput = 1f;
+            }
+            else if (Input.GetKey(KeyCode.P))
+            {
+                zoomInput = -1f;
+            }
+
+            ZoomCamera(zoomInput);
+        
     }
 
     void ZoomCamera(float zoomInput)
