@@ -193,7 +193,7 @@ public class QuestionsAndAnswers : MonoBehaviour
     {
         //reads CSV into string
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-        int numOfAnimal = data.Length / 12 - 1;
+        int numOfAnimal = data.Length / 12;
 
         for (int i = 0; i < numOfAnimal; i++)
         {

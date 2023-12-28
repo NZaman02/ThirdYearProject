@@ -37,6 +37,10 @@ public class CameraFollow : MonoBehaviour
             {
                 zoomInput = -1f;
             }
+            else
+            {
+                zoomInput = 0f;
+            }
 
             ZoomCamera(zoomInput);
         
@@ -44,8 +48,9 @@ public class CameraFollow : MonoBehaviour
 
     void ZoomCamera(float zoomInput)
     {
+        
         Camera.main.orthographicSize -= zoomInput * zoomSpeed * Time.deltaTime;
-
+        
         // Clamp the orthographic size to avoid extreme zoom levels
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
 
