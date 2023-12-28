@@ -41,7 +41,7 @@ public class CreatePlayer : MonoBehaviour
                         player.transform.position = spawnPosition;
                         break;
                     case "Coast":
-                        spawnPosition = new Vector3(2f, 35.0f, 1f);
+                        spawnPosition = new Vector3(2f, -31.0f, 1f);
                         player.transform.position = spawnPosition;
                         break;
                     case "Forest":

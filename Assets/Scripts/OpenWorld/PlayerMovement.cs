@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-
+    public float sprintSpeedMultiplier = 1.5f;
     public float moveSpeed;
     public Rigidbody2D Rb;
 
     private Vector2 moveDirection; 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +28,10 @@ public class NewBehaviourScript : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
+        float speedMultiplier = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ? sprintSpeedMultiplier : 1.0f;
+
+
+        moveDirection = new Vector2(moveX, moveY).normalized * speedMultiplier; ;
     }
 
     void Move()

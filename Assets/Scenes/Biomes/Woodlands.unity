@@ -89973,7 +89973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa38f7516aced1943a5fb47f227f910f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneDestination: Forest
+  SceneDestination: Desert
   CurrentScene: Woodlands
   sceneManager: {fileID: 1593758022}
 --- !u!61 &1878889239
