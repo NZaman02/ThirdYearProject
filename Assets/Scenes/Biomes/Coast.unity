@@ -743,6 +743,7 @@ GameObject:
   - component: {fileID: 1136340292}
   - component: {fileID: 1136340294}
   - component: {fileID: 1136340293}
+  - component: {fileID: 1136340295}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -876,6 +877,97 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!68 &1136340295
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136340291}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -18.014225, y: 15.96228}
+  - {x: -18.1304, y: 7.210669}
+  - {x: -16.237638, y: 7.3975663}
+  - {x: -15.619356, y: 5.6100955}
+  - {x: -14.138226, y: 5.304501}
+  - {x: -13.183002, y: 4.333501}
+  - {x: -11.841856, y: 4.3537664}
+  - {x: -11.391782, y: 2.6153035}
+  - {x: -9.791995, y: 2.2843342}
+  - {x: -8.25465, y: 0.47429776}
+  - {x: -6.914083, y: 0.4340223}
+  - {x: -6.388091, y: -0.61348444}
+  - {x: -4.9362636, y: -0.49309528}
+  - {x: -4.264624, y: -2.4907877}
+  - {x: -3.0168724, y: -2.5993333}
+  - {x: -2.2598076, y: -3.643691}
+  - {x: -1.1102676, y: -3.2497547}
+  - {x: -0.15491748, y: -4.8031034}
+  - {x: 0.89618206, y: -4.777981}
+  - {x: 1.6837202, y: -5.560755}
+  - {x: 4.7041793, y: -5.7231393}
+  - {x: 6.7759786, y: -7.7362666}
+  - {x: 7.910703, y: -7.6659594}
+  - {x: 9.039756, y: -8.622057}
+  - {x: 10.82143, y: -8.637283}
+  - {x: 11.790747, y: -9.71541}
+  - {x: 14.887457, y: -9.550251}
+  - {x: 15.883804, y: -10.578641}
+  - {x: 31.717314, y: -10.602003}
+  - {x: 32.727905, y: -9.75367}
+  - {x: 34.148167, y: -9.777116}
+  - {x: 35.01767, y: -8.846041}
+  - {x: 37.049614, y: -8.535101}
+  - {x: 37.596165, y: -7.7261267}
+  - {x: 39.931465, y: -7.6264563}
+  - {x: 40.772583, y: -6.4140177}
+  - {x: 42.126465, y: -6.5231123}
+  - {x: 42.709667, y: -5.8593616}
+  - {x: 45.225517, y: -5.5428405}
+  - {x: 45.55962, y: -4.6809506}
+  - {x: 47.133224, y: -4.551263}
+  - {x: 47.5879, y: -3.7317529}
+  - {x: 51.004616, y: -3.6965418}
+  - {x: 51.37995, y: -2.8441703}
+  - {x: 55.18195, y: -2.6447284}
+  - {x: 55.63849, y: -0.7599158}
+  - {x: 57.28496, y: -0.5932793}
+  - {x: 57.79147, y: 0.30831128}
+  - {x: 61.044483, y: 0.3878671}
+  - {x: 61.030266, y: 1.1138514}
+  - {x: 61.001266, y: 2.17139}
+  - {x: 61.10609, y: 16.11707}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1186817508
 GameObject:
   m_ObjectHideFlags: 0
@@ -31786,6 +31878,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1617234362}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnInterval
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: animalPrefabs.Array.size
       value: 1

@@ -156,6 +156,7 @@ public class CatchManager : MonoBehaviour
 
     private void LoadCardSceneOnClick()
     {
+        PlayerPrefs.SetString("JustCaught", "True");
         SceneManager.LoadScene("AnimalCard");
     }
 }
