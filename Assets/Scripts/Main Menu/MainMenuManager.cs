@@ -8,15 +8,16 @@ using UnityEngine.UI;
 
 
 
-
 public class MainMenuManager : MonoBehaviour
 {
 
 
     public Button newGameButton;
     public Button loadGameButton;
-    public Button quitGameButton;
+    public Button quitGameButton, exportDataButton;
+    public InputField pathInputField;
     public TextAsset answerBankText;
+    public string exportPath;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,8 @@ public class MainMenuManager : MonoBehaviour
         newGameButton.onClick.AddListener(NewGame);
         loadGameButton.onClick.AddListener(LoadGame);
         quitGameButton.onClick.AddListener(QuitGame);
+        exportDataButton.onClick.AddListener(exportData);
+        pathInputField.onEndEdit.AddListener(ReadInput);
 
     }
 
@@ -66,11 +69,40 @@ public class MainMenuManager : MonoBehaviour
 
     }
 
+
+    private void ReadInput(string input)
+    {
+        exportPath = input;
+    }
+
+    private void exportData()
+    {
+        if (!string.IsNullOrEmpty(exportPath))
+        {
+            string content = "";
+            using (StreamReader reader = new StreamReader(Path.Combine(Application.persistentDataPath, "playerStats.csv")))
+            {
+                // Read the entire content of the CSV file
+                content = reader.ReadToEnd();
+            }
+
+            StreamWriter writer = new StreamWriter(exportPath, true); // 'true' means append, 'false' means overwrite
+
+            // Write the data to the file
+            writer.WriteLine(content);
+
+            // Close the file
+            writer.Close();
+        }
+
+    }
+
     void QuitGame()
     {
         Application.Quit();
 
     }
+
 }
 
       
