@@ -23,7 +23,7 @@ public class FillCard : MonoBehaviour
     public TMP_Text predators;
     public TMP_Text funFact;
     public Image animalImage;
-    public float fadeDuration = 3f;
+    public float fadeDuration = 4.5f;
 
 
     public TextAsset answerBankText;
@@ -112,49 +112,48 @@ public class FillCard : MonoBehaviour
         {
             //alpha relevant text
             PlayerPrefs.SetString("JustCaught", "False");
+            Debug.Log(playerKnowledgeLevel);
             if (playerKnowledgeLevel == 1)
             {
                 endangeredStatus.color = new Color(endangeredStatus.color.r, endangeredStatus.color.g, endangeredStatus.color.b, 0f);
                 latinName.color = new Color(latinName.color.r, latinName.color.g, latinName.color.b, 0f);
-                StartCoroutine(FadeText(endangeredStatus, endangeredStatus.color.a, 1f, fadeDuration));
+                 StartCoroutine(FadeText(endangeredStatus, endangeredStatus.color.a, 1f, fadeDuration));
                 StartCoroutine(FadeText(latinName, latinName.color.a, 1f, fadeDuration));
+                
             }
             if (playerKnowledgeLevel== 2)
             {
                 diet.color = new Color(diet.color.r, diet.color.g, diet.color.b, 0f);
                 wildAge.color = new Color(wildAge.color.r, wildAge.color.g, wildAge.color.b, 0f);
                 captivAge.color = new Color(captivAge.color.r, captivAge.color.g, captivAge.color.b, 0f);
-                StartCoroutine(FadeText(diet, endangeredStatus.color.a, 1f, fadeDuration));
-                StartCoroutine(FadeText(wildAge, latinName.color.a, 1f, fadeDuration));
-                StartCoroutine(FadeText(captivAge, endangeredStatus.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(diet, diet.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(wildAge, wildAge.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(captivAge, captivAge.color.a, 1f, fadeDuration));
             }
             if (playerKnowledgeLevel == 3)
             {
                 weight.color = new Color(weight.color.r, weight.color.g, weight.color.b, 0f);
                 anLength.color = new Color(anLength.color.r, anLength.color.g, anLength .color.b, 0f);
                 anheight.color = new Color(anheight.color.r, anheight.color.g, anheight.color.b, 0f);
-                StartCoroutine(FadeText(weight, endangeredStatus.color.a, 1f, fadeDuration));
-                StartCoroutine(FadeText(anLength, latinName.color.a, 1f, fadeDuration));
-                StartCoroutine(FadeText(anheight, endangeredStatus.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(weight, weight.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(anLength, anLength.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(anheight, anheight.color.a, 1f, fadeDuration));
             }
             if (playerKnowledgeLevel == 4)
             {
                 offspringNum.color = new Color(offspringNum.color.r, offspringNum.color.g, offspringNum.color.b, 0f);
                 predators.color = new Color(predators.color.r, predators.color.g, predators.color.b, 0f);
-                StartCoroutine(FadeText(offspringNum, endangeredStatus.color.a, 1f, fadeDuration));
-                StartCoroutine(FadeText(predators, latinName.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(offspringNum, offspringNum.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(predators, predators.color.a, 1f, fadeDuration));
             }
             if (playerKnowledgeLevel == 5)
             {
                 funFact.color = new Color(funFact.color.r, funFact.color.g, funFact.color.b, 0f);
-                StartCoroutine(FadeText(funFact, endangeredStatus.color.a, 1f, fadeDuration));
+                StartCoroutine(FadeText(funFact, funFact.color.a, 1f, fadeDuration));
             }
            
 
         }
-
-
-
 
     }
     private Texture2D LoadTexture(string path)
@@ -185,15 +184,15 @@ public class FillCard : MonoBehaviour
         while (elapsedTime < duration)
         {
             float alpha = Mathf.Lerp(start, end, elapsedTime / duration);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-            Debug.Log(text.color);
+            text.color = new Color(1f, 0.92f, 0.016f, alpha);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
        
-        text.color = new Color(text.color.r, text.color.g, text.color.b, end);
+        text.color = new Color(1f, 0.92f, 0.016f, end);
 
+        Debug.Log(text.color);
 
     }
 
