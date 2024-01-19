@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
 
     public Button newGameButton;
     public Button loadGameButton;
+    public Button quitGameButton;
     public TextAsset answerBankText;
 
     // Start is called before the first frame update
@@ -22,9 +23,11 @@ public class MainMenuManager : MonoBehaviour
     {
         newGameButton.onClick.AddListener(NewGame);
         loadGameButton.onClick.AddListener(LoadGame);
+        quitGameButton.onClick.AddListener(QuitGame);
+
     }
 
-     void NewGame()
+    void NewGame()
     {
         //resets player knowledge
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
@@ -60,6 +63,12 @@ public class MainMenuManager : MonoBehaviour
     void LoadGame()
     {
         SceneManager.LoadScene("Grasslands");
+
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
 
     }
 }
