@@ -20,5 +20,6 @@ public class LevelTrigger : MonoBehaviour
             SceneManager.LoadScene(SceneDestination, LoadSceneMode.Single);
            
         }
+       
     }
 }

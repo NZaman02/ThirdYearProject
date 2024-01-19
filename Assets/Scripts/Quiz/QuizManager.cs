@@ -174,7 +174,6 @@ public class QuizManager : MonoBehaviour
         // Append data to the CSV file
         using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-            // Compose the CSV line
             string csvLine = string.Format("{0},{1},{2}", whichQ, GotCorrect, timeTaken);
             writer.WriteLine(csvLine);
         }

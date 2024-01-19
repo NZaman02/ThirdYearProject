@@ -28,15 +28,16 @@ public class AnimalSpawner : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+ 
 
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         //checks player between right dist and not spawned too many
         if (timer <= 0.0f && distanceToPlayer <= maxPlayerDistance && distanceToPlayer >= minPlayerDistance && spawnedAnimals.Count < maxSpawnedAnimals )
         {
+        
             if (spawnedAnimals.Count >= maxSpawnedAnimals)
             {
+
                 RemoveFurthestAnimal();
             }
             SpawnAnimal();
@@ -48,7 +49,7 @@ public class AnimalSpawner : MonoBehaviour
     private void SpawnAnimal()
     {
         Vector3 randomPosition = transform.position + Random.insideUnitSphere * spawnRadius;
-        randomPosition.y = 0.0f;
+        randomPosition.z = 0f;
 
         // Choose a random animal prefab from the array.
         GameObject selectedAnimal = animalPrefabs[Random.Range(0, animalPrefabs.Length)];
@@ -64,7 +65,7 @@ public class AnimalSpawner : MonoBehaviour
         //kills far away animals
         for (int i = 0; i < spawnedAnimals.Count; i++)
         {
-            float distance = Vector3.Distance(spawnedAnimals[i].transform.position, player.position);
+            float distance = Vector2.Distance(spawnedAnimals[i].transform.position, player.position);
             if (distance > maxDistance)
             {
                 maxDistance = distance;

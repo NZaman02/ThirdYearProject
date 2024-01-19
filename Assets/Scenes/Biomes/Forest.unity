@@ -241,15 +241,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.048025
+      value: 18.6
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3041172
+      value: -6.07
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.042255785
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283,6 +283,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1776581754}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: maxSpawnedAnimals
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: minPlayerDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: animalPrefabs.Array.size
       value: 1
@@ -24850,15 +24866,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2701206
+      value: 2.71
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.056934
+      value: -41.56
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.042255785
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24892,6 +24908,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1776581754}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: minPlayerDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: animalPrefabs.Array.size
       value: 1

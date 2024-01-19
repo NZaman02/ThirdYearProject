@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9556236
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7064886
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3137475857430529113, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -179,6 +179,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1792562353}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: maxSpawnedAnimals
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: minPlayerDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: animalPrefabs.Array.size
       value: 1
@@ -966,6 +982,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1792562353}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: spawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: maxPlayerDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: maxSpawnedAnimals
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
+      propertyPath: minPlayerDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8316178114412421526, guid: 5e1b57afa77017840b018f531bd4e1bb, type: 3}
       propertyPath: animalPrefabs.Array.size
       value: 1
