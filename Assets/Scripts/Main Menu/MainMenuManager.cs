@@ -46,6 +46,13 @@ public class MainMenuManager : MonoBehaviour
             tw.WriteLine(animalNames[i] + ",0");
         }
         tw.Close();
+
+        filePath = Path.Combine(Application.persistentDataPath, "playerStats.csv");
+        tw = new StreamWriter(filePath, false);
+        tw.WriteLine("WhichQ,GotCorrect,TimeTaken");
+
+
+
         LoadGame();
     }
 

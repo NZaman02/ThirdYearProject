@@ -112,7 +112,6 @@ public class FillCard : MonoBehaviour
         {
             //alpha relevant text
             PlayerPrefs.SetString("JustCaught", "False");
-            Debug.Log(playerKnowledgeLevel);
             if (playerKnowledgeLevel == 1)
             {
                 endangeredStatus.color = new Color(endangeredStatus.color.r, endangeredStatus.color.g, endangeredStatus.color.b, 0f);
@@ -192,7 +191,6 @@ public class FillCard : MonoBehaviour
        
         text.color = new Color(1f, 0.92f, 0.016f, end);
 
-        Debug.Log(text.color);
 
     }
 
