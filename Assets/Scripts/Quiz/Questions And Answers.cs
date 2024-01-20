@@ -165,6 +165,32 @@ public class QuestionsAndAnswers : MonoBehaviour
             }
 
         }
+        for (int i = 0; i < Answers.Length; i++)
+        {
+            switch (QuestionToAsk) 
+            { 
+                case 4:
+                    Question = "What is the average lifespan for this animal in the WILD?";
+                    Answers[i] = Answers[i].ToString() + " Years";
+                    break;
+                case 5:
+                    Question = "What is the average lifespan for this animal in CAPTIVITY?";
+                    Answers[i] = Answers[i].ToString() + " Years";
+                    break;
+                case 6:
+                    Question = "What is the average WEIGHT for this animal?";
+                    Answers[i] = Answers[i].ToString() + " Kg";
+                    break;
+                case 9:
+                    Question = "How many offspring does the animal have on average?";
+                    Answers[i] = Answers[i].ToString() + " a year";
+                    break;
+                default:
+                    break;
+           
+            }
+        }
+      
 
         return CorrectAnswer;
         
