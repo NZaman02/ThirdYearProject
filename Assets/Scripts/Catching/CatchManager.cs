@@ -12,11 +12,12 @@ using System.Threading;
 public class CatchManager : MonoBehaviour
 {
     //set ui
-    public TMP_Text dice1, dice2, bonus, amountNeeded, finalAmount, currentAnimalText, result, continueText;
+    public TMP_Text bonus, amountNeeded, finalAmount, currentAnimalText, result, continueText;
     private int dice1Val, dice2Val, bonusVal, amountNeededVal;
     public Button continueButton;
+    public Image animalImage;
     private string currentAnimal;
-    public Animator animator;
+    public Animator animatorDice1,animatorDice2;
 
     //update knowledge
     private int correctAns;
@@ -24,10 +25,31 @@ public class CatchManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetBool("Rolling", true);
+        animatorDice1.SetBool("Rolling", true);
+        animatorDice2.SetBool("Rolling", true);
+
+        string data = PlayerPrefs.GetString("Animal");
+        string imagePath = $"Assets/Sprites/Animals/{data}.png";
+
+        Texture2D texture = LoadTexture(imagePath);
+
+        if (texture != null)
+        {
+            Sprite animalSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
+            animalImage.sprite = animalSprite;
+        }
+
+        StartCoroutine(SetupCatchingContext());
+
+    }
+
+    IEnumerator SetupCatchingContext()
+    {
+        continueButton.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(3);
 
         //set up catching context
-        continueButton.gameObject.SetActive(false);
         currentAnimal = PlayerPrefs.GetString("Animal");
         correctAns = PlayerPrefs.GetInt("Answer");
 
@@ -52,16 +74,15 @@ public class CatchManager : MonoBehaviour
         int finalAmountVal = dice1Val + dice2Val + bonusVal;
 
         //do text
-        dice1.text = dice1Val.ToString();
-        dice2.text = dice2Val.ToString();
         bonus.text = bonusVal.ToString();
         amountNeeded.text = amountNeededVal.ToString();
         finalAmount.text = finalAmountVal.ToString();
 
         //for animator
-        Thread.Sleep(5000);
-        animator.SetInteger("D1 Roll", dice1Val) ;
-        animator.SetBool("Rolling", false);
+        animatorDice1.SetInteger("D1 Roll", dice1Val) ;
+        animatorDice1.SetBool("Rolling", false);
+        animatorDice2.SetInteger("D1 Roll", dice2Val);
+        animatorDice2.SetBool("Rolling", false);
 
 
         if (correctAns == 2)
@@ -168,5 +189,25 @@ public class CatchManager : MonoBehaviour
         PlayerPrefs.SetString("JustCaught", "True");
         SceneManager.LoadScene("AnimalCard");
     }
+
+    private Texture2D LoadTexture(string path)
+    {
+        try
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes(path);
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(fileData);
+            return texture;
+        }
+        catch
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes($"Assets/Sprites/Animals/NA.png");
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(fileData);
+            return texture;
+        }
+    }
+
+
 }
 

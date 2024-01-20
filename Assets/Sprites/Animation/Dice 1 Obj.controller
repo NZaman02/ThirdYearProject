@@ -326,7 +326,7 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 7
+  - m_ConditionMode: 6
     m_ConditionEvent: D1 Roll
     m_EventTreshold: 2
   - m_ConditionMode: 2
