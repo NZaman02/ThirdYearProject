@@ -98,7 +98,7 @@ public class QuestionsAndAnswers : MonoBehaviour
                 break;
         }
 
-        
+
         string[] myAttributes = { "name", "endangeredStatus", "latinName", "diet", "wildAge", "captivAge", "weight", "anLength", "anheight", "offspringNum", "predators" };
 
         //place right answers and wrong answers 
@@ -119,7 +119,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         //fills up all 4 answers
         for (int i = 0; i < 4; i++)
         {
-        //puts away right answer in correct answer spot
+            //puts away right answer in correct answer spot
             if (i == CorrectAnswer)
             {
                 object attributeValue = field.GetValue(myAnimalFactsList[indexNeeded]);
@@ -165,6 +165,8 @@ public class QuestionsAndAnswers : MonoBehaviour
             }
 
         }
+   
+        //adds units to answers
         for (int i = 0; i < Answers.Length; i++)
         {
             switch (QuestionToAsk) 
@@ -183,7 +185,7 @@ public class QuestionsAndAnswers : MonoBehaviour
                     break;
                 case 9:
                     Question = "How many offspring does the animal have on average?";
-                    Answers[i] = Answers[i].ToString() + " a year";
+                    Answers[i] = Answers[i].ToString() + " Years";
                     break;
                 default:
                     break;

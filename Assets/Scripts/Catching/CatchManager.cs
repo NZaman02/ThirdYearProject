@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using System.Xml.Serialization;
 using System.IO;
 using System;
+using System.Threading;
 
 public class CatchManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CatchManager : MonoBehaviour
     private int dice1Val, dice2Val, bonusVal, amountNeededVal;
     public Button continueButton;
     private string currentAnimal;
+    public Animator animator;
 
     //update knowledge
     private int correctAns;
@@ -22,6 +24,7 @@ public class CatchManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator.SetBool("Rolling", true);
 
         //set up catching context
         continueButton.gameObject.SetActive(false);
@@ -55,7 +58,13 @@ public class CatchManager : MonoBehaviour
         amountNeeded.text = amountNeededVal.ToString();
         finalAmount.text = finalAmountVal.ToString();
 
-        if(correctAns == 2)
+        //for animator
+        Thread.Sleep(5000);
+        animator.SetInteger("D1 Roll", dice1Val) ;
+        animator.SetBool("Rolling", false);
+
+
+        if (correctAns == 2)
         {
             currentAnimalText.text = "First Catch For: " + currentAnimal;
         }
