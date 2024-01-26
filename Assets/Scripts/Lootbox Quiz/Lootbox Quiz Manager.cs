@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static UnityEditor.ShaderData;
 
 public class LootboxQuizManager : MonoBehaviour
 {
@@ -17,18 +18,118 @@ public class LootboxQuizManager : MonoBehaviour
     public Button animal1,animal2, animal3, answer1, answer2, answer3, submit, returnOpenWorld;
     public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text;
 
+    private int[] pair1,pair2,pair3;
+    private int numclicked;
+    private int[,] answersToUse,ansPairs;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        int[,] answersToUse = setupQuestions();
+        pair1 = new int[] { 0, 0 };
+        pair2 = new int[] { 0, 0 };
+        pair3 = new int[] { 0, 0 };
 
-        int[,] ansPairs = setUpButtons(answersToUse);
-        
+        numclicked = 0;
 
+        answersToUse = setupQuestions();
+        ansPairs = setUpButtons(answersToUse);
+
+        animal1.onClick.AddListener(() => addClickedButton(animal1));
+        animal2.onClick.AddListener(() => addClickedButton(animal2));
+        animal3.onClick.AddListener(() => addClickedButton(animal3));
+        answer1.onClick.AddListener(() => addClickedButton(answer1));
+        answer2.onClick.AddListener(() => addClickedButton(answer2));
+        answer3.onClick.AddListener(() => addClickedButton(answer3));
 
     }
 
+    private void checkAns()
+    {
+        int[] pair4 = new int[] { ansPairs[0,0], ansPairs[0,1] };
+        int[] pair5 = new int[] { ansPairs[1, 0], ansPairs[1, 1] };
+        int[] pair6 = new int[] { ansPairs[2, 0], ansPairs[2, 1] };
+
+
+
+        int[][] pairs = {pair1,pair2,pair3, pair4, pair5, pair6 };
+
+
+        HashSet<HashSet<int>> pairSets = new HashSet<HashSet<int>>(pairs.Select(pair => new HashSet<int>(pair)));
+
+        Debug.Log(pairSets.Count == pairs.Length);
+
+    }
+
+    void Update()
+    {
+        if(numclicked == 6  )
+        {
+            checkAns();
+        }    
+    }
+
+
+    public void addClickedButton(Button button)
+    {
+        if (numclicked < 1) {
+            pair1[0] = (whichButton(button.name));
+            button.image.color = Color.blue;
+            numclicked++;
+        }
+        else if (numclicked < 2)
+        {
+            pair1[1] = (whichButton(button.name));
+            button.image.color = Color.blue;
+            numclicked++;
+
+        }
+        else if (numclicked < 3)
+        {
+            pair2[0] = (whichButton(button.name));
+            button.image.color = Color.green;
+            numclicked++;
+        }
+        else if (numclicked < 4)
+        {
+            pair2[1] = (whichButton(button.name));
+            button.image.color = Color.green;
+            numclicked++;
+        }
+        else if (numclicked < 5)
+        {
+            pair3[0] = (whichButton(button.name));
+            button.image.color = Color.yellow;
+            numclicked++;
+        }
+        else if (numclicked < 6)
+        {
+            pair3[1] = (whichButton(button.name));
+            button.image.color = Color.yellow;
+            numclicked++;
+        }
+        
+
+    }
+
+    public int whichButton(string name)
+    {
+        switch (name){
+            case "animal1":
+                return 1;
+            case "animal2":
+                return 2;
+            case "animal3":
+                return 3;
+            case "answer1":
+                return 1;
+            case "answer2":
+                return 2;
+            case "answer3":
+                return 3;
+        }
+        return 0;
+    }
 
     public int[,] setUpButtons(int[,]answers)
     {
