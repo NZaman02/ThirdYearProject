@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEditor.ShaderData;
 
@@ -15,7 +16,7 @@ public class LootboxQuizManager : MonoBehaviour
 
     public TextAsset answerBankText;
 
-    public Button animal1,animal2, animal3, answer1, answer2, answer3, submit, returnOpenWorld;
+    public Button animal1,animal2, animal3, answer1, answer2, answer3, reset, returnOpenWorld;
     public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text;
 
 
@@ -35,6 +36,7 @@ public class LootboxQuizManager : MonoBehaviour
         pair3 = new int[] { 0, 0 };
 
         numclicked = 0;
+        returnOpenWorld.gameObject.SetActive(false);
 
         answersToUse = setupQuestions();
         ansPairs = setUpButtons(answersToUse);
@@ -45,27 +47,46 @@ public class LootboxQuizManager : MonoBehaviour
         answer1.onClick.AddListener(() => addClickedButton(answer1));
         answer2.onClick.AddListener(() => addClickedButton(answer2));
         answer3.onClick.AddListener(() => addClickedButton(answer3));
+        reset.onClick.AddListener(resetButton);
+        returnOpenWorld.onClick.AddListener(LoadOpenSceneOnClick);
+
+
 
     }
 
-    private void checkAns()
+    private void LoadOpenSceneOnClick()
     {
+        string sceneName = PlayerPrefs.GetString("PrevScene");
+        SceneManager.LoadScene(sceneName);
+    }
 
-      
+    private void resetButton()
+    {
+        numclicked = 0;
+        animal1.image.color = Color.white;
+        animal2.image.color = Color.white;
+        animal3.image.color = Color.white;
+        answer1.image.color = Color.white;
+        answer2.image.color = Color.white;
+        answer3.image.color = Color.white;
+    }
+
+    private void checkAns()
+    {      
         int[][] clickedButtons = new int[][] { pair1, pair2, pair3 };
       
         bool allFound = true;
         for (int x = 0; x < 3; x++)
         {
             int[] correctPair = new int[] { ansPairs[x, 0], ansPairs[x, 1] };
-            bool isCorrect = false;  // Flag to check if a correct pair is found
+            bool isCorrect = false;  
 
             for (int y = 0; y < 3; y++)
             {
                 if (correctPair.SequenceEqual(clickedButtons[y]))
                 {
                     isCorrect = true;
-                    break;  // Exit the inner loop if a correct pair is found
+                    break; 
                 }
             }
 
@@ -85,7 +106,13 @@ public class LootboxQuizManager : MonoBehaviour
         if(numclicked == 6  )
         {
             checkAns();
+            numclicked = 7;
         }    
+        if (numclicked == 7)
+        {
+            returnOpenWorld.gameObject.SetActive(true);
+
+        }
     }
 
 
@@ -205,34 +232,34 @@ public class LootboxQuizManager : MonoBehaviour
             switch (answers[i,1])
             {
                 case 1:
-                    Question = "Cnservation status";
+                    Question = "Conservation status: ";
                     break;
                 case 2:
-                    Question = "Latin name?";
+                    Question = "Latin name: ";
                     break;
                 case 3:
-                    Question = "Diet ";
+                    Question = "Diet: ";
                     break;
                 case 4:
-                    Question = "Average lifespan in the WILD?";
+                    Question = "Average lifespan in the WILD: ";
                     break;
                 case 5:
-                    Question = "Average lifespan in CAPTIVITY?";
+                    Question = "Average lifespan in CAPTIVITY: ";
                     break;
                 case 6:
-                    Question = "Average WEIGHT";
+                    Question = "Average WEIGHT: ";
                     break;
                 case 7:
-                    Question = "Average LENGTH ";
+                    Question = "Average LENGTH: ";
                     break;
                 case 8:
-                    Question = "Average HEIGHT";
+                    Question = "Average HEIGHT: ";
                     break;
                 case 9:
-                    Question = "Average Offspring?";
+                    Question = "Average Offspring: ";
                     break;
                 case 10:
-                    Question = "Predators";
+                    Question = "Predators: ";
                     break;
             }
 
