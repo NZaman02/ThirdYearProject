@@ -2,21 +2,160 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class LootboxQuizManager : MonoBehaviour
 {
 
     public TextAsset answerBankText;
+
+    public Button animal1,animal2, animal3, answer1, answer2, answer3, submit, returnOpenWorld;
+    public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        setupQuestions();
+        int[][] answersToUse = setupQuestions();
+        int [,] ansPairs = setUpButtons(answersToUse);
+        
+
+
     }
 
+
+    public int[,] setUpButtons(int[][]answers)
+    {
+        int[,] allPairs = { { 0,0 } , {0,0 } , {0,0} };
+
+        //choose random buttons 
+        List<int> animalButtonChoices = new List<int> { 1, 2, 3 };
+        List<int> questionButtonChoices = new List<int> { 1, 2, 3 };
+
+        System.Random random = new System.Random();
+        System.Random random2 = new System.Random();
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            // Choose a random number from the list
+            int randomIndex1 = random.Next(0, animalButtonChoices.Count);
+            int randomIndex2 = random2.Next(0, questionButtonChoices.Count);
+
+            int chosenNum1 = animalButtonChoices[randomIndex1];
+            int chosenNum2 = questionButtonChoices[randomIndex2];
+
+            animalButtonChoices.RemoveAt(randomIndex1);
+            questionButtonChoices.RemoveAt(randomIndex2);
+
+            allPairs[i,0] = chosenNum1;
+            allPairs[i,1]= chosenNum2;
+           
+        }
+
+
+        Debug.Log("Button pairs");
+        Debug.Log(allPairs[0, 0].ToString() + " " + allPairs[0, 1].ToString());
+        Debug.Log(allPairs[1, 0].ToString() + " " + allPairs[1, 1].ToString());
+        Debug.Log(allPairs[2, 0].ToString() + " " + allPairs[2, 1].ToString());
+
+
+
+
+        Debug.Log("Animals");
+
+
+        Debug.Log(string.Join("\n", answers.Select(row => string.Join(", ", row))));
+
+        string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+        //set up text for buttons
+        for (int i = 0; i < 3; i++)
+        {
+            int buttonToDo1 = allPairs[i,0];
+
+            switch (buttonToDo1)
+            {
+                case 1:
+                    animal1Text.text = data[(answers[i][0] * 12)];
+                    break;
+                case 2:
+                    animal2Text.text = data[(answers[i][0] * 12)];
+                    break;
+                case 3:
+                    animal3Text.text = data[(answers[i][0] * 12)];
+                    break;
+
+            }
+
+            int buttonToDo2 = allPairs[i, 1];
+            string Question = "";
+            //set question
+            switch (allPairs[i,1])
+            {
+                case 1:
+                    Question = " conservation status";
+                    break;
+                case 2:
+                    Question = " latin name?";
+                    break;
+                case 3:
+                    Question = "diet ";
+                    break;
+                case 4:
+                    Question = "We average lifespan for this animal in the WILD?";
+                    break;
+                case 5:
+                    Question = "average lifespan for this animal in CAPTIVITY?";
+                    break;
+                case 6:
+                    Question = " average WEIGHT";
+                    break;
+                case 7:
+                    Question = " average LENGTH ";
+                    break;
+                case 8:
+                    Question = " average HEIGHT";
+                    break;
+                case 9:
+                    Question = "offspring does the animal have on average?";
+                    break;
+                case 10:
+                    Question = " predators?";
+                    break;
+            }
+
+
+            switch (buttonToDo2)
+            {
+                case 1:
+                    answer1Text.text = Question + data[(answers[i][0] * 12) + answers[i][1]];
+                    break;
+                case 2:
+                    answer2Text.text = Question + data[(answers[i][0] * 12) + answers[i][1]];
+                    break;
+                case 3:
+                    answer3Text.text = Question + data[(answers[i][0] * 12) + answers[i][1]];
+                    break;
+
+            }
+
+
+        }
+
+
+
+        //return array of pairs
+        return allPairs;
+    }
+
+
     // Update is called once per frame
-    void setupQuestions()
+    public int[][] setupQuestions()
     {
 
         //work out what know
@@ -47,8 +186,9 @@ public class LootboxQuizManager : MonoBehaviour
             questionChosen[i] = valuestoAdd[1];
         }
 
-      
-
+        //returns unique set of answers and animals 
+        int[][] toReturn = { animalChosen, questionChosen };
+        return toReturn;
     }
 
 
