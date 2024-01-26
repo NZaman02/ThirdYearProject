@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Biomes/Savanna.unity
     guid: 02fdc89ea728b5547b2d17b7e04df79b
+  - enabled: 1
+    path: Assets/Scenes/Lootbox Quiz Scene.unity
+    guid: b399601401b2b9e4d85255e2390451c4
   m_configObjects: {}

@@ -34,7 +34,7 @@ public class MainMenuManager : MonoBehaviour
     {
         //resets player knowledge
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-        int numOfAnimal = data.Length / 12 - 1;
+        int numOfAnimal = data.Length / 12 ;
 
         List<string> animalNames = new List<string>();
 

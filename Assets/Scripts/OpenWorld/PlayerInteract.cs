@@ -22,6 +22,11 @@ public class PlayerInteract : MonoBehaviour
                     //do interaction if near
                     npcInteractable.Interact();
                 }
+                if (collider.TryGetComponent(out LootboxInteractable lootboxInteractable))
+                {
+                    //do interaction if near
+                    lootboxInteractable.Interact();
+                }
             }
         }
     }
