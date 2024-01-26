@@ -21,15 +21,16 @@ public class LootboxQuizManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int[][] answersToUse = setupQuestions();
-        int [,] ansPairs = setUpButtons(answersToUse);
+        int[,] answersToUse = setupQuestions();
+
+        int[,] ansPairs = setUpButtons(answersToUse);
         
 
 
     }
 
 
-    public int[,] setUpButtons(int[][]answers)
+    public int[,] setUpButtons(int[,]answers)
     {
         int[,] allPairs = { { 0,0 } , {0,0 } , {0,0} };
 
@@ -64,13 +65,12 @@ public class LootboxQuizManager : MonoBehaviour
         Debug.Log(allPairs[1, 0].ToString() + " " + allPairs[1, 1].ToString());
         Debug.Log(allPairs[2, 0].ToString() + " " + allPairs[2, 1].ToString());
 
-
-
-
         Debug.Log("Animals");
 
+        Debug.Log(answers[0, 0].ToString() + " " + answers[0, 1].ToString());
+        Debug.Log(answers[1, 0].ToString() + " " + answers[1, 1].ToString());
+        Debug.Log(answers[2, 0].ToString() + " " + answers[2, 1].ToString());
 
-        Debug.Log(string.Join("\n", answers.Select(row => string.Join(", ", row))));
 
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
         //set up text for buttons
@@ -81,13 +81,13 @@ public class LootboxQuizManager : MonoBehaviour
             switch (buttonToDo1)
             {
                 case 1:
-                    animal1Text.text = data[(answers[i][0] * 12)];
+                    animal1Text.text = data[(answers[i,0] * 12)];
                     break;
                 case 2:
-                    animal2Text.text = data[(answers[i][0] * 12)];
+                    animal2Text.text = data[(answers[i,0] * 12)];
                     break;
                 case 3:
-                    animal3Text.text = data[(answers[i][0] * 12)];
+                    animal3Text.text = data[(answers[i,0] * 12)];
                     break;
 
             }
@@ -95,37 +95,37 @@ public class LootboxQuizManager : MonoBehaviour
             int buttonToDo2 = allPairs[i, 1];
             string Question = "";
             //set question
-            switch (allPairs[i,1])
+            switch (answers[i,1])
             {
                 case 1:
-                    Question = " conservation status";
+                    Question = "Cnservation status";
                     break;
                 case 2:
-                    Question = " latin name?";
+                    Question = "Latin name?";
                     break;
                 case 3:
-                    Question = "diet ";
+                    Question = "Diet ";
                     break;
                 case 4:
-                    Question = "We average lifespan for this animal in the WILD?";
+                    Question = "Average lifespan in the WILD?";
                     break;
                 case 5:
-                    Question = "average lifespan for this animal in CAPTIVITY?";
+                    Question = "Average lifespan in CAPTIVITY?";
                     break;
                 case 6:
-                    Question = " average WEIGHT";
+                    Question = "Average WEIGHT";
                     break;
                 case 7:
-                    Question = " average LENGTH ";
+                    Question = "Average LENGTH ";
                     break;
                 case 8:
-                    Question = " average HEIGHT";
+                    Question = "Average HEIGHT";
                     break;
                 case 9:
-                    Question = "offspring does the animal have on average?";
+                    Question = "Average Offspring?";
                     break;
                 case 10:
-                    Question = " predators?";
+                    Question = "Predators";
                     break;
             }
 
@@ -133,13 +133,13 @@ public class LootboxQuizManager : MonoBehaviour
             switch (buttonToDo2)
             {
                 case 1:
-                    answer1Text.text = Question + data[(answers[i][0] * 12) + answers[i][1]];
+                    answer1Text.text = Question + ": " +data[(answers[i, 0] * 12) + answers[i, 1] ];
                     break;
                 case 2:
-                    answer2Text.text = Question + data[(answers[i][0] * 12) + answers[i][1]];
+                    answer2Text.text = Question + ": " + data[(answers[i, 0] * 12) + answers[i, 1] ];
                     break;
                 case 3:
-                    answer3Text.text = Question + data[(answers[i][0] * 12) + answers[i][1]];
+                    answer3Text.text = Question + ": " + data[( answers[i, 0] * 12) + answers[i, 1]];
                     break;
 
             }
@@ -155,7 +155,7 @@ public class LootboxQuizManager : MonoBehaviour
 
 
     // Update is called once per frame
-    public int[][] setupQuestions()
+    public int[,] setupQuestions()
     {
 
         //work out what know
@@ -184,10 +184,10 @@ public class LootboxQuizManager : MonoBehaviour
             int[] valuestoAdd = chooseInfo(animalChosen, questionChosen, informationKnow);
             animalChosen[i] = valuestoAdd[0];
             questionChosen[i] = valuestoAdd[1];
-        }
 
+        }
         //returns unique set of answers and animals 
-        int[][] toReturn = { animalChosen, questionChosen };
+        int[,] toReturn = { {animalChosen[0], questionChosen[0] }, { animalChosen[1], questionChosen[1] }, { animalChosen[2], questionChosen[2] }, };
         return toReturn;
     }
 
