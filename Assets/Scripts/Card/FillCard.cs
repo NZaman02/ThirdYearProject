@@ -47,16 +47,16 @@ public class FillCard : MonoBehaviour
             }
         }
 
-        endangeredStatus.text = "<b>Endangered Status: </b>" + "Locked";
+        endangeredStatus.text = "Locked";
         latinName.text = "Locked";
-        diet.text = "<b>Dietary Habit: </b>" + "Locked";
-        wildAge.text = "<b>Average Lifespan in Wild: </b>" + "Locked";
-        captivAge.text = "<b>Average Lifespan in Captivity </b>" + "Locked";
-        weight.text = "<b>Average Weight/kg: </b>" + "Locked";
-        anLength.text = "<b>Average Length/m: </b>" + "Locked";
-        anheight.text = "<b>Average Height/m: </b>" + "Locked";
-        offspringNum.text = "<b>Average Offspring: </b>" + "Locked";
-        predators.text = "<b>Predators: </b>" + "Locked";
+        diet.text = "Locked";
+        wildAge.text = "Locked";
+        captivAge.text = "Locked";
+        weight.text = "Locked";
+        anLength.text = "Locked";
+        anheight.text = "Locked";
+        offspringNum.text ="Locked";
+        predators.text = "Locked";
         funFact.text = "Locked";
 
         //reads data from answer bank csv
@@ -71,25 +71,25 @@ public class FillCard : MonoBehaviour
                 //assign relevant info to text once found
                 nameText.text =  data[offset];
                 if(playerKnowledgeLevel >= 1) {
-                    endangeredStatus.text = "<b>Endangered Status: </b>" + data[offset + 1];
+                    endangeredStatus.text = data[offset + 1];
                     latinName.text = data[offset + 2];
                 }
                 if (playerKnowledgeLevel >= 2)
                 {
-                    diet.text = "<b>Dietary Habit: </b>" + data[offset + 3];
-                    wildAge.text = "<b>Average Lifespan in Wild: </b>" + data[offset + 4];
-                    captivAge.text = "<b>Average Lifespan in Captivity </b>" + data[offset + 5];
+                    diet.text = data[offset + 3];
+                    wildAge.text = data[offset + 4];
+                    captivAge.text = data[offset + 5];
                 }
                 if (playerKnowledgeLevel >= 3)
                 {
-                    weight.text = "<b>Average Weight/kg: </b>" + data[offset + 6];
-                    anLength.text = "<b>Average Length/m: </b>" + data[offset + 7];
-                    anheight.text = "<b>Average Height/m: </b>" + data[offset + 8];
+                    weight.text =data[offset + 6];
+                    anLength.text = data[offset + 7];
+                    anheight.text = data[offset + 8];
                 }
                 if (playerKnowledgeLevel >= 4)
                 {
-                    offspringNum.text = "<b>Average Offspring: </b>" + data[offset + 9] + " a year";
-                    predators.text = "<b>Predators: </b>" + data[offset + 10];
+                    offspringNum.text = data[offset + 9] + " years";
+                    predators.text = data[offset + 10];
                 }
                 if (playerKnowledgeLevel >= 5)
                 {
