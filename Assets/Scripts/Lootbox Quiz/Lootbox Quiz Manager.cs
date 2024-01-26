@@ -18,8 +18,12 @@ public class LootboxQuizManager : MonoBehaviour
     public Button animal1,animal2, animal3, answer1, answer2, answer3, submit, returnOpenWorld;
     public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text;
 
+
+    //what has been pressed
     private int[] pair1,pair2,pair3;
     private int numclicked;
+
+    //questions chosen
     private int[,] answersToUse,ansPairs;
 
 
@@ -46,18 +50,33 @@ public class LootboxQuizManager : MonoBehaviour
 
     private void checkAns()
     {
-        int[] pair4 = new int[] { ansPairs[0,0], ansPairs[0,1] };
-        int[] pair5 = new int[] { ansPairs[1, 0], ansPairs[1, 1] };
-        int[] pair6 = new int[] { ansPairs[2, 0], ansPairs[2, 1] };
 
+      
+        int[][] clickedButtons = new int[][] { pair1, pair2, pair3 };
+      
+        bool allFound = true;
+        for (int x = 0; x < 3; x++)
+        {
+            int[] correctPair = new int[] { ansPairs[x, 0], ansPairs[x, 1] };
+            bool isCorrect = false;  // Flag to check if a correct pair is found
 
+            for (int y = 0; y < 3; y++)
+            {
+                if (correctPair.SequenceEqual(clickedButtons[y]))
+                {
+                    isCorrect = true;
+                    break;  // Exit the inner loop if a correct pair is found
+                }
+            }
 
-        int[][] pairs = {pair1,pair2,pair3, pair4, pair5, pair6 };
-
-
-        HashSet<HashSet<int>> pairSets = new HashSet<HashSet<int>>(pairs.Select(pair => new HashSet<int>(pair)));
-
-        Debug.Log(pairSets.Count == pairs.Length);
+            if (!isCorrect)
+            {
+                allFound = false;
+            }
+            
+            
+        }
+        Debug.Log(allFound);
 
     }
 
@@ -115,17 +134,17 @@ public class LootboxQuizManager : MonoBehaviour
     public int whichButton(string name)
     {
         switch (name){
-            case "animal1":
+            case "Animal1":
                 return 1;
-            case "animal2":
+            case "Animal2":
                 return 2;
-            case "animal3":
+            case "Animal3":
                 return 3;
-            case "answer1":
+            case "Answer1":
                 return 1;
-            case "answer2":
+            case "Answer2":
                 return 2;
-            case "answer3":
+            case "Answer3":
                 return 3;
         }
         return 0;
@@ -159,19 +178,6 @@ public class LootboxQuizManager : MonoBehaviour
             allPairs[i,1]= chosenNum2;
            
         }
-
-
-        Debug.Log("Button pairs");
-        Debug.Log(allPairs[0, 0].ToString() + " " + allPairs[0, 1].ToString());
-        Debug.Log(allPairs[1, 0].ToString() + " " + allPairs[1, 1].ToString());
-        Debug.Log(allPairs[2, 0].ToString() + " " + allPairs[2, 1].ToString());
-
-        Debug.Log("Animals");
-
-        Debug.Log(answers[0, 0].ToString() + " " + answers[0, 1].ToString());
-        Debug.Log(answers[1, 0].ToString() + " " + answers[1, 1].ToString());
-        Debug.Log(answers[2, 0].ToString() + " " + answers[2, 1].ToString());
-
 
         string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
         //set up text for buttons
