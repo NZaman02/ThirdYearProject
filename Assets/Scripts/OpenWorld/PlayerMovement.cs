@@ -26,8 +26,21 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         jetpackUses = PlayerPrefs.GetInt("JetpackUses");
+
+        if (jetpackUses > 0)
+        {
+            playerAnimator.SetBool("Skating", true);
+        }
+        if (jetpackUses == 0)
+        {
+            playerAnimator.SetBool("Skating", false);
+        }
+        if (timeForJetpack == 0)
+        {
+            playerAnimator.SetBool("boosting", false);
+        }
+
         ProcessInputs();
     }
 
@@ -62,6 +75,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && (jetpackUses > 0) && timeForJetpack > 0 && jetPackOn)
         {
+            playerAnimator.SetBool("Boosting", true);
             speedMultiplier = jumpForce;
             timeForJetpack -= Time.deltaTime;
         }
@@ -70,6 +84,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             jetPackOn = false;
             PlayerPrefs.SetInt("JetpackUses", jetpackUses - 1);
+            playerAnimator.SetBool("Boosting", false);
             PlayerPrefs.Save();
             timeForJetpack = 3f;
         }
