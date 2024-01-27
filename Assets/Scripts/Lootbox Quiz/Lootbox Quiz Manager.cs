@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEditor.ShaderData;
@@ -24,8 +25,9 @@ public class LootboxQuizManager : MonoBehaviour
     private int[] pair1,pair2,pair3;
     private int numclicked;
 
-    //questions chosen
+    //questions chosen and where they go 
     private int[,] answersToUse,ansPairs;
+    private float startTime, endTime;
 
 
     // Start is called before the first frame update
@@ -41,7 +43,7 @@ public class LootboxQuizManager : MonoBehaviour
         textColor.a = 0;
         result.color = textColor;
 
-
+        startTime = Time.time;
         answersToUse = setupQuestions();
         ansPairs = setUpButtons(answersToUse);
 
@@ -53,8 +55,6 @@ public class LootboxQuizManager : MonoBehaviour
         answer3.onClick.AddListener(() => addClickedButton(answer3));
         reset.onClick.AddListener(resetButton);
         returnOpenWorld.onClick.AddListener(LoadOpenSceneOnClick);
-
-
 
     }
 
@@ -75,8 +75,41 @@ public class LootboxQuizManager : MonoBehaviour
         answer3.image.color = Color.white;
     }
 
+    private void updateStats(int GotCorrect)
+    {
+        string timeTaken = (endTime - startTime).ToString();
+
+        string filePath = Path.Combine(Application.persistentDataPath, "playerStats.csv");
+        // Check if the file exists; 
+        if (!File.Exists(filePath))
+        {
+            using (StreamWriter writer = new StreamWriter(filePath, false))
+            {
+                writer.WriteLine("WhichQ,GotCorrect,TimeTaken, QType"); // Header
+            }
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            string whichQ = answersToUse[i,0].ToString() +"." +answersToUse[i,1].ToString();
+
+
+            // Append data to the CSV file
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                string csvLine = string.Format("{0},{1},{2},{3}", whichQ, GotCorrect, timeTaken,"2");
+                writer.WriteLine(csvLine);
+            }
+
+        }
+
+
+    }
+
+
     private void checkAns()
     {
+        endTime = Time.time;
         reset.gameObject.SetActive(false);
 
         int[][] clickedButtons = new int[][] { pair1, pair2, pair3 };
@@ -109,6 +142,7 @@ public class LootboxQuizManager : MonoBehaviour
         if (allFound)
         {
             result.text = "Correct";
+            updateStats(1);
         }
         else
         {
@@ -153,7 +187,7 @@ public class LootboxQuizManager : MonoBehaviour
 
 
             }
-
+            updateStats(0);
 
         }
 

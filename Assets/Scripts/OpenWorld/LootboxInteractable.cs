@@ -37,10 +37,8 @@ public class LootboxInteractable : MonoBehaviour
         }
         else
         {
-
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = mySprite;
-
         }
 
     }

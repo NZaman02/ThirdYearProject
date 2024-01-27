@@ -167,14 +167,14 @@ public class QuizManager : MonoBehaviour
         {   
             using (StreamWriter writer = new StreamWriter(filePath, false))
             {
-                writer.WriteLine("WhichQ,GotCorrect,TimeTaken"); // Header
+                writer.WriteLine("WhichQ,GotCorrect,TimeTaken, QType"); // Header
             }
         }
 
         // Append data to the CSV file
         using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-            string csvLine = string.Format("{0},{1},{2}", whichQ, GotCorrect, timeTaken);
+            string csvLine = string.Format("{0},{1},{2},{3}", whichQ, GotCorrect, timeTaken, "1");
             writer.WriteLine(csvLine);
         }
 
