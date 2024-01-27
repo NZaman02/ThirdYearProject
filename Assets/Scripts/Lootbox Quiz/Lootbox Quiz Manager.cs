@@ -17,7 +17,7 @@ public class LootboxQuizManager : MonoBehaviour
     public TextAsset answerBankText;
 
     public Button animal1,animal2, animal3, answer1, answer2, answer3, reset, returnOpenWorld;
-    public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text;
+    public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text,result;
 
 
     //what has been pressed
@@ -37,6 +37,10 @@ public class LootboxQuizManager : MonoBehaviour
 
         numclicked = 0;
         returnOpenWorld.gameObject.SetActive(false);
+        Color textColor = result.color;
+        textColor.a = 0;
+        result.color = textColor;
+
 
         answersToUse = setupQuestions();
         ansPairs = setUpButtons(answersToUse);
@@ -72,7 +76,9 @@ public class LootboxQuizManager : MonoBehaviour
     }
 
     private void checkAns()
-    {      
+    {
+        reset.gameObject.SetActive(false);
+
         int[][] clickedButtons = new int[][] { pair1, pair2, pair3 };
       
         bool allFound = true;
@@ -97,7 +103,67 @@ public class LootboxQuizManager : MonoBehaviour
             
             
         }
-        Debug.Log(allFound);
+        Color textColor = result.color;
+        textColor.a = 255;
+        result.color = textColor;
+        if (allFound)
+        {
+            result.text = "Correct";
+        }
+        else
+        {
+            result.text = "Wrong";
+
+           
+
+            //shows correct answer
+            for (int x = 0;x< 3; x++)
+            {
+                Color currentCol = Color.white;
+                switch (x) { 
+                    case 0:
+                        currentCol = Color.red; break;
+                    case 1: 
+                        currentCol = Color.green; break;    
+                    case 2:
+                        currentCol= Color.blue; break;  
+                
+                }
+
+                Debug.Log("x" + x);
+                Debug.Log(currentCol);
+
+                Debug.Log("a " + ansPairs[x, 0]);
+                Debug.Log("b " + ansPairs[x, 1]);
+
+                switch(ansPairs[x, 0])
+                {
+                    case 1:
+                        animal1.image.color = currentCol; break;
+                    case 2:
+                        animal2.image.color = currentCol ; break;
+                    case 3:
+                        animal3.image.color = currentCol; break;
+
+                }
+
+                switch (ansPairs[x, 1])
+                {
+                    case 1:
+                        answer1.image.color = currentCol; break;
+                    case 2:
+                        answer2.image.color = currentCol; break;
+                    case 3:
+                        answer3.image.color = currentCol; break;
+
+                }
+
+
+
+            }
+
+
+        }
 
     }
 
@@ -267,13 +333,13 @@ public class LootboxQuizManager : MonoBehaviour
             switch (buttonToDo2)
             {
                 case 1:
-                    answer1Text.text = Question + ": " +data[(answers[i, 0] * 12) + answers[i, 1] ];
+                    answer1Text.text = Question  +data[(answers[i, 0] * 12) + answers[i, 1] ];
                     break;
                 case 2:
-                    answer2Text.text = Question + ": " + data[(answers[i, 0] * 12) + answers[i, 1] ];
+                    answer2Text.text = Question  + data[(answers[i, 0] * 12) + answers[i, 1] ];
                     break;
                 case 3:
-                    answer3Text.text = Question + ": " + data[( answers[i, 0] * 12) + answers[i, 1]];
+                    answer3Text.text = Question  + data[( answers[i, 0] * 12) + answers[i, 1]];
                     break;
 
             }
