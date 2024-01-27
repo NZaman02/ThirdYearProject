@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -12,16 +13,20 @@ public class NewBehaviourScript : MonoBehaviour
     private float timeForJetpack = 3f;
     private bool jetPackOn = false;
     public Rigidbody2D Rb;
+    public Animator playerAnimator; 
 
     private Vector2 moveDirection;
+    private SpriteRenderer spriteRenderer;
 
 
 
-  
+
 
     // Update is called once per frame
     void Update()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         jetpackUses = PlayerPrefs.GetInt("JetpackUses");
         ProcessInputs();
     }
@@ -37,6 +42,16 @@ public class NewBehaviourScript : MonoBehaviour
         //only 0 or 1
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
+        
+        if (moveX < 0)
+        {
+            spriteRenderer.flipX = true; 
+        }
+        else if (moveX > 0)
+        {
+            spriteRenderer.flipX = false; 
+        }
+
 
         float speedMultiplier = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ? sprintSpeedMultiplier : 1.0f;
 
@@ -61,12 +76,14 @@ public class NewBehaviourScript : MonoBehaviour
 
 
         moveDirection = new Vector2(moveX, moveY).normalized * speedMultiplier;
-     
+
     }
 
     void Move()
     {
         Rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        playerAnimator.SetFloat("Speed", Rb.velocity.magnitude);
+
     }
 
 }

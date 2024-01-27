@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7265396570979177452}
   - component: {fileID: 2582211005550402530}
   - component: {fileID: 197002867614123992}
+  - component: {fileID: 5510797268233540221}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -127,9 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f224b96a82ce7754fb9d5b6725547d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 4
   sprintSpeedMultiplier: 1.5
   moveSpeed: 5
+  startTime: 0
   Rb: {fileID: 2006253933097979159}
+  playerAnimator: {fileID: 5510797268233540221}
 --- !u!61 &2582211005550402530
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,3 +192,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalInteractedWith: 
+--- !u!95 &5510797268233540221
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146651966056673}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f21ead467383c34dbbe5e2c753ed99d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
