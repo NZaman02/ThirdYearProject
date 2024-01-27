@@ -142,6 +142,7 @@ public class LootboxQuizManager : MonoBehaviour
         if (allFound)
         {
             result.text = "Correct";
+            PlayerPrefs.SetInt("JetpackUses", 3);
             updateStats(1);
         }
         else
