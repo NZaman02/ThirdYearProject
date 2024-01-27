@@ -470,22 +470,37 @@ public class LootboxQuizManager : MonoBehaviour
 
             //check answer to q not done 
             string[] data = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-            int numOfAnimal = data.Length / 12;
 
             string ansToAdd = data[(AnimalToAsk * 12) + QuestionToAsk];
             bool check3 = true;
+            
+            //answer not applicable to others
+            bool check4 = true;
+
             for (int i = 0; i < 3; i++)
             {
                 string currentAns = data[(animalDone[i] * 12) + questionDone[i]];
+                string otherAnimalAns = data[(animalDone[i] * 12) + QuestionToAsk];
 
                 if (ansToAdd == currentAns)
                 {
                     check3 = false;
                 }
 
+                if(ansToAdd == otherAnimalAns)
+                {
+                    check4 = false;
+                }
+
             }
 
-            if (check1 == true && check2 == true && check3 == true)
+
+
+
+
+
+
+            if (check1 == true && check2 == true && check3 == true && check4 == true)
             {
                 looping = false;
                 animalChose = AnimalToAsk;
