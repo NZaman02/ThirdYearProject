@@ -114,8 +114,6 @@ public class LootboxQuizManager : MonoBehaviour
         {
             result.text = "Wrong";
 
-           
-
             //shows correct answer
             for (int x = 0;x< 3; x++)
             {
@@ -129,12 +127,6 @@ public class LootboxQuizManager : MonoBehaviour
                         currentCol= Color.blue; break;  
                 
                 }
-
-                Debug.Log("x" + x);
-                Debug.Log(currentCol);
-
-                Debug.Log("a " + ansPairs[x, 0]);
-                Debug.Log("b " + ansPairs[x, 1]);
 
                 switch(ansPairs[x, 0])
                 {

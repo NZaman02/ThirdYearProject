@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LootboxInteractable : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
+
+    // Reference to the sprite you want to use
+    public Sprite mySprite;
+
     public void Interact()
     {
 
@@ -31,8 +37,13 @@ public class LootboxInteractable : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not unlocked enough");
+
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = mySprite;
+
         }
 
     }
+
+    
 }
