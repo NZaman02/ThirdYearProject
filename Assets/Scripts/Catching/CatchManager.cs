@@ -27,8 +27,6 @@ public class CatchManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
-
         string data = PlayerPrefs.GetString("Animal");
         string imagePath = $"Assets/Sprites/Animals/{data}.png";
 
@@ -41,13 +39,6 @@ public class CatchManager : MonoBehaviour
         }
 
         continueButton.gameObject.SetActive(false);
-
-
-
-
-
-
-
 
         if (PlayerPrefs.GetInt("Answer") == 2)
         {
@@ -99,7 +90,6 @@ public class CatchManager : MonoBehaviour
 
             }
             string[] answerBank = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
-            Debug.Log(String.Join(",", parts));
             correctAnswer.text = answerBank[(int.Parse(parts[0]) * 12) + int.Parse(parts[1])];
         }
 
@@ -170,9 +160,6 @@ public class CatchManager : MonoBehaviour
         animatorDice2.SetBool("Rolling", false);
         finalAmount.text = finalAmountVal.ToString();
 
-        
-      
-
         if (finalAmountVal >= amountNeededVal) 
         {
             result.color = Color.green;
@@ -184,7 +171,6 @@ public class CatchManager : MonoBehaviour
             NotCaught();
         }
         continueButton.gameObject.SetActive(true);
-
 
     }
 
