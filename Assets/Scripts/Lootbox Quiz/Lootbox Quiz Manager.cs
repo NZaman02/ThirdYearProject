@@ -304,8 +304,7 @@ public class LootboxQuizManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int buttonToDo1 = allPairs[i,0];
-            Debug.Log(answers[i,0]);
-            Debug.Log(answers[i,1]);
+          
             switch (buttonToDo1)
             {
                 case 1:

@@ -63,7 +63,6 @@ public class CreatePlayer : MonoBehaviour
                          player.transform.position = spawnPosition;
                         break;
                     case "Woodlands":
-                        Debug.Log("A");
                         spawnPosition = new Vector3(-30f, 15f, 1f);
                         player.transform.position = spawnPosition;
                         break;
