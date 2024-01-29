@@ -125,7 +125,17 @@ public class QuizManager : MonoBehaviour
 
         string timeTaken = (endTime - startTime).ToString();
 
-        string animalChosen = PlayerPrefs.GetString("Animal");
+        string theAnimal = PlayerPrefs.GetString("Animal");
+
+        string[] listOfAnimals = { "African Bush Elephant", "African Clawless Otter", "African Penguin", "Black Rhinoceros", "Burchell's Zebra", "Cape Buffalo", "Cheetah", "Geometric Tortoise", "Giraffe", "Hippopotamus", "Hooded Vulture", "Impala", "Knysna Turaco", "Leopard", "Lion", "Spotted Hyena", "Vervet Monkey", "Warthog" };
+        string animalChosen = "0";
+        for(int i = 0;  i < listOfAnimals.Length; i++)
+        {
+            if (listOfAnimals[i] == theAnimal)
+            {
+                animalChosen = (i+1).ToString();
+            }
+        }
 
         string whichQ = "";
         switch (QuestionTxt.text)

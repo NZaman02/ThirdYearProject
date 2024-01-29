@@ -8,11 +8,13 @@ using System.Xml.Serialization;
 using System.IO;
 using System;
 using System.Threading;
+using UnityEngine.Windows;
 
 public class CatchManager : MonoBehaviour
 {
     //set ui
-    public TMP_Text bonus, amountNeeded, finalAmount, currentAnimalText, result, continueText;
+    public TMP_Text bonus, amountNeeded, finalAmount, currentAnimalText, result, continueText, question, correctAnswer;
+    public TextAsset answerBankText;
     private int dice1Val, dice2Val, bonusVal, amountNeededVal;
     public Button continueButton;
     public Image animalImage;
@@ -25,8 +27,7 @@ public class CatchManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animatorDice1.SetBool("Rolling", true);
-        animatorDice2.SetBool("Rolling", true);
+     
 
         string data = PlayerPrefs.GetString("Animal");
         string imagePath = $"Assets/Sprites/Animals/{data}.png";
@@ -39,6 +40,70 @@ public class CatchManager : MonoBehaviour
             animalImage.sprite = animalSprite;
         }
 
+        continueButton.gameObject.SetActive(false);
+
+
+
+
+
+
+
+
+        if (PlayerPrefs.GetInt("Answer") == 2)
+        {
+            question.color = new Color(question.color.r, question.color.g, question.color.b, 0);
+            correctAnswer.color = new Color(question.color.r, question.color.g, question.color.b, 0);
+        }
+        else{
+            //dislay q and correct ans
+            string filePath = Path.Combine(Application.persistentDataPath, "playerStats.csv");
+            string[] allLines = System.IO.File.ReadAllLines(filePath);
+            string lastLine = allLines[allLines.Length - 1];
+            string[] values = lastLine.Split(',');
+            string qtype = values[0].Trim();
+            string[] parts = qtype.Split('.');
+            string questionWas = parts[1];
+
+            switch (questionWas)
+            {
+                case "1":
+                    question.text = "Conservation status: ";
+                    break;
+                case "2":
+                    question.text = "Latin name: ";
+                    break;
+                case "3":
+                    question.text = "Diet: ";
+                    break;
+                case "4":
+                    question.text = "Average lifespan in the WILD: ";
+                    break;
+                case "5":
+                    question.text = "Average lifespan in CAPTIVITY: ";
+                    break;
+                case "6":
+                    question.text = "Average WEIGHT: ";
+                    break;
+                case "7":
+                    question.text = "Average LENGTH: ";
+                    break;
+                case "8":
+                    question.text = "Average HEIGHT: ";
+                    break;
+                case "9":
+                    question.text = "Average Offspring: ";
+                    break;
+                case "10":
+                    question.text = "Predators: ";
+                    break;
+
+            }
+            string[] answerBank = answerBankText.text.Split(new[] { ",", "\n" }, StringSplitOptions.None);
+            Debug.Log(String.Join(",", parts));
+            correctAnswer.text = answerBank[(int.Parse(parts[0]) * 12) + int.Parse(parts[1])];
+        }
+
+
         StartCoroutine(SetupCatchingContext());
 
     }
@@ -47,7 +112,6 @@ public class CatchManager : MonoBehaviour
     {
         continueButton.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(3);
 
         //set up catching context
         currentAnimal = PlayerPrefs.GetString("Animal");
@@ -61,29 +125,26 @@ public class CatchManager : MonoBehaviour
         {
             case 0:
                 bonusVal = 0;
+                bonus.color = Color.red;
+                correctAnswer.color = Color.red;
                 break;
             case 1:
                 bonusVal = 3;
+                bonus.color = Color.green;
+                correctAnswer.color = Color.green;  
                 break;
             case 2:
                 bonusVal = 5;
+                bonus.text = "First Catch Bonus";
+                break;
+            default:
+                bonusVal = 0;
+                bonus.color = Color.red;
                 break;
         }
         amountNeededVal = 8;
 
         int finalAmountVal = dice1Val + dice2Val + bonusVal;
-
-        //do text
-        bonus.text = bonusVal.ToString();
-        amountNeeded.text = amountNeededVal.ToString();
-        finalAmount.text = finalAmountVal.ToString();
-
-        //for animator
-        animatorDice1.SetInteger("D1 Roll", dice1Val) ;
-        animatorDice1.SetBool("Rolling", false);
-        animatorDice2.SetInteger("D1 Roll", dice2Val);
-        animatorDice2.SetBool("Rolling", false);
-
 
         if (correctAns == 2)
         {
@@ -93,16 +154,37 @@ public class CatchManager : MonoBehaviour
         {
             currentAnimalText.text = currentAnimal;
         }
+
+        //do text
+        bonus.text = bonusVal.ToString();
+        amountNeeded.text = amountNeededVal.ToString();
+       
+        animatorDice1.SetBool("Rolling", true);
+        animatorDice2.SetBool("Rolling", true);
+        yield return new WaitForSeconds(3);
+
+        //for animator
+        animatorDice1.SetInteger("D1 Roll", dice1Val) ;
+        animatorDice1.SetBool("Rolling", false);
+        animatorDice2.SetInteger("D1 Roll", dice2Val);
+        animatorDice2.SetBool("Rolling", false);
+        finalAmount.text = finalAmountVal.ToString();
+
+        
       
 
         if (finalAmountVal >= amountNeededVal) 
         {
+            result.color = Color.green;
             Caught();
         }
         else
         {
+            result.color = Color.red;
             NotCaught();
         }
+        continueButton.gameObject.SetActive(true);
+
 
     }
 
@@ -113,7 +195,7 @@ public class CatchManager : MonoBehaviour
         result.text = "CAUGHT";
         //work out current player knowledge
         string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
-        string[] knowledgeData = File.ReadAllLines(filePath);
+        string[] knowledgeData = System.IO.File.ReadAllLines(filePath);
 
 
         List<string> animalNames = new List<string>();

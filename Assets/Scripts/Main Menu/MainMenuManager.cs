@@ -55,7 +55,7 @@ public class MainMenuManager : MonoBehaviour
 
         filePath = Path.Combine(Application.persistentDataPath, "playerStats.csv");
         tw = new StreamWriter(filePath, false);
-        tw.WriteLine("WhichQ,GotCorrect,TimeTaken");
+        tw.WriteLine("WhichQ,GotCorrect,TimeTaken,QType");
 
 
 
