@@ -57,9 +57,10 @@ public class MainMenuManager : MonoBehaviour
         tw = new StreamWriter(filePath, false);
         tw.WriteLine("WhichQ,GotCorrect,TimeTaken,QType");
 
+        PlayerPrefs.SetInt("JetpackUses", 0);
 
 
-        LoadGame();
+        SceneManager.LoadScene("Tutorial");
     }
 
 

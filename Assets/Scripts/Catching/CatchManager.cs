@@ -242,7 +242,7 @@ public class CatchManager : MonoBehaviour
     {
         continueButton.onClick.AddListener(LoadOpenSceneOnClick);
         continueButton.gameObject.SetActive(true);
-        result.text = "FAILED";
+        result.text = "UNLUCKY TRY AGAIN";
         continueText.text = "Return To Open World";
     }
 

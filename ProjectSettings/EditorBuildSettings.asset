@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lootbox Quiz Scene.unity
     guid: b399601401b2b9e4d85255e2390451c4
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 2761531fc64ae4f48b02ca7643c6911e
   m_configObjects: {}

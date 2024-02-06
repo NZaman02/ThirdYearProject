@@ -35,7 +35,7 @@ public class QuestionsAndAnswers : MonoBehaviour
         }
 
         //find 3 non related animals to deceive
-        List<int> possibleIndices = Enumerable.Range(1, myAnimalFactsList.Count).ToList();
+        List<int> possibleIndices = Enumerable.Range(1, myAnimalFactsList.Count-1).ToList();
         possibleIndices.Remove(indexNeeded);
         System.Random random = new System.Random();
         int[] incorrectAnimals = (possibleIndices)
@@ -142,8 +142,8 @@ public class QuestionsAndAnswers : MonoBehaviour
                 else
                 {
                     //puts wrong answers in extra answer spots
+
                     object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
-                 
 
                     //checks not already in or is a duplicate of answer
                     if (!(Answers.Contains(attributeValue.ToString())) && !(attributeValue?.ToString() == field.GetValue(myAnimalFactsList[indexNeeded])?.ToString())   )
