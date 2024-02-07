@@ -95,13 +95,12 @@ public class FillCard : MonoBehaviour
                 {
                     funFact.text = data[offset + 11];
                 }
+                
+                
+                Sprite animalSprite = Resources.Load<Sprite>(animalName);
 
-                string imagePath = $"Assets/Sprites/Animals/{data[offset]}.png";
-                Texture2D texture = LoadTexture(imagePath);
-                //adds image
-                if (texture != null)
+                if (animalSprite != null)
                 {
-                    Sprite animalSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
                     animalImage.sprite = animalSprite;
                 }
                 break;

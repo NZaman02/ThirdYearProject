@@ -32,13 +32,10 @@ public class QuizManager : MonoBehaviour
     {
         //set up images
         string data = PlayerPrefs.GetString("Animal");
-        string imagePath = $"Assets/Sprites/Animals/{data}.png";
+        Sprite animalSprite = Resources.Load<Sprite>(data);
 
-        Texture2D texture = LoadTexture(imagePath);
-
-        if (texture != null)
+        if (animalSprite != null)
         {
-            Sprite animalSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
             animalImage.sprite = animalSprite;
         }
 

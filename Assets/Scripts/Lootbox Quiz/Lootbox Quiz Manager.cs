@@ -10,7 +10,6 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.ShaderData;
 
 public class LootboxQuizManager : MonoBehaviour
 {
