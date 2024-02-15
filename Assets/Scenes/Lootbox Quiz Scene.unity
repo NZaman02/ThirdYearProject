@@ -1568,6 +1568,7 @@ MonoBehaviour:
   answer2Text: {fileID: 638718873}
   answer3Text: {fileID: 1646103425}
   result: {fileID: 744870361}
+  animator: {fileID: 41621985}
 --- !u!1 &810214037
 GameObject:
   m_ObjectHideFlags: 0

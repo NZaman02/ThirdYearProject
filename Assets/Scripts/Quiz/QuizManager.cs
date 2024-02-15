@@ -8,6 +8,7 @@ using System;
 using System.IO;
 using System.Xml.Linq;
 using System.Runtime.CompilerServices;
+using System.Collections;
 
 public class QuizManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class QuizManager : MonoBehaviour
     public Button[] buttonList;
     public TMP_Text animalNameText;
     public Image animalImage;
+    public Animator animator;
+
 
     //csv
     private float startTime, endTime; 
@@ -26,7 +29,7 @@ public class QuizManager : MonoBehaviour
     //right or wrong answer
     public int correctButton;
     public Button continueButton;
-
+   
 
     private void Start()
     {
@@ -186,9 +189,18 @@ public class QuizManager : MonoBehaviour
         }
 
 
-        SceneManager.LoadScene("Catch Animal");
-
+        StartCoroutine(LoadingGame());
     }
+
+    IEnumerator LoadingGame()
+    {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Catch Animal");
+        animator.SetTrigger("Start");
+    }
+
+
 
     void generateQuestion()
     {   

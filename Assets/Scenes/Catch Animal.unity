@@ -614,8 +614,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 105.97, y: -188.1}
-  m_SizeDelta: {x: 714.54, y: 89.6}
+  m_AnchoredPosition: {x: 103.48, y: -183.11}
+  m_SizeDelta: {x: 689.6, y: 79.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &533714019
 MonoBehaviour:
@@ -1227,8 +1227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34.376404, y: 238.03743}
-  m_SizeDelta: {x: 1933.5735, y: 1091.2991}
+  m_AnchoredPosition: {x: -898, y: -304}
+  m_SizeDelta: {x: 124.7371, y: 55.7401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &995030761
 Animator:
@@ -2113,6 +2113,7 @@ MonoBehaviour:
   animalImage: {fileID: 249643678}
   animatorDice1: {fileID: 1985938293}
   animatorDice2: {fileID: 148636600}
+  animator: {fileID: 995030761}
 --- !u!1 &2060083812
 GameObject:
   m_ObjectHideFlags: 0

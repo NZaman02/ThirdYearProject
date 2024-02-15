@@ -18,7 +18,7 @@ public class LootboxQuizManager : MonoBehaviour
 
     public Button animal1,animal2, animal3, answer1, answer2, answer3, reset, returnOpenWorld;
     public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text,result;
-
+    public Animator animator;
 
     //what has been pressed
     private int[] pair1,pair2,pair3;
@@ -57,10 +57,18 @@ public class LootboxQuizManager : MonoBehaviour
 
     }
 
-    private void LoadOpenSceneOnClick()
+    IEnumerator LoadingOpen()
     {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
         string sceneName = PlayerPrefs.GetString("PrevScene");
         SceneManager.LoadScene(sceneName);
+        animator.SetTrigger("Start");
+    }
+
+    private void LoadOpenSceneOnClick()
+    {
+       StartCoroutine(LoadingOpen());
     }
 
     private void resetButton()

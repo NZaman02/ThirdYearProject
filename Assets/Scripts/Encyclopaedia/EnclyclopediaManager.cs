@@ -10,6 +10,8 @@ public class EncyclopediaManager : MonoBehaviour
     public AnimalAns[] animalDataArray;
     public List<AnimalAns> myAnimalFactsList = new List<AnimalAns>();
     public TextAsset answerBankText;
+    public Animator animator;
+
 
     void Start()
     {
@@ -25,7 +27,7 @@ public class EncyclopediaManager : MonoBehaviour
                 //sets up all buttons for encylopedia grid from csv
                 GameObject buttonInstance = Instantiate(animalButtonPrefab, gridParent);
                 AnimalButton animalButton = buttonInstance.GetComponent<AnimalButton>();
-                animalButton.SetAnimalData(myAnimalFactsList[i]);
+                animalButton.SetAnimalData(myAnimalFactsList[i], animator);
 
                 yield return null;
 

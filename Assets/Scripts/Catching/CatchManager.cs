@@ -19,7 +19,7 @@ public class CatchManager : MonoBehaviour
     public Button continueButton;
     public Image animalImage;
     private string currentAnimal;
-    public Animator animatorDice1,animatorDice2;
+    public Animator animatorDice1,animatorDice2, animator;
 
     //update knowledge
     private int correctAns;
@@ -245,16 +245,32 @@ public class CatchManager : MonoBehaviour
 
     private void LoadOpenSceneOnClick()
     {
-        string sceneName = PlayerPrefs.GetString("PrevScene");
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadingOpen());
+
     }
 
     private void LoadCardSceneOnClick()
     {
         PlayerPrefs.SetString("JustCaught", "True");
-        SceneManager.LoadScene("AnimalCard");
+        StartCoroutine(LoadingCard());
     }
 
+    IEnumerator LoadingCard()
+    {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("AnimalCard");
+        animator.SetTrigger("Start");
+    }
+
+    IEnumerator LoadingOpen()
+    {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        string sceneName = PlayerPrefs.GetString("PrevScene");
+        SceneManager.LoadScene(sceneName);
+        animator.SetTrigger("Start");
+    }
 
 
 

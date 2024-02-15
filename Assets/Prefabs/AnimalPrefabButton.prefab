@@ -141,6 +141,7 @@ MonoBehaviour:
   playerKnowledge: {fileID: 4900000, guid: 9b9897a52375c9d4198a417f96ba0783, type: 3}
   gridParent: {fileID: 4803165672158522029}
   starImage: {fileID: 5846150273872538092, guid: f4a17780af3b85b438a354d6c78e0954, type: 3}
+  animator: {fileID: 4977567490382971284, guid: 76033dbe0d030fd4a908637f0f926f14, type: 3}
 --- !u!1 &4201301530403667108
 GameObject:
   m_ObjectHideFlags: 0

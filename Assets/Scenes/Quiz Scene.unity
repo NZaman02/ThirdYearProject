@@ -495,6 +495,7 @@ MonoBehaviour:
   - {fileID: 497418132}
   animalNameText: {fileID: 983955222}
   animalImage: {fileID: 1548384918}
+  animator: {fileID: 1108701446}
   correctButton: 0
   continueButton: {fileID: 363377954}
 --- !u!4 &510232863

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ReturnZoo : MonoBehaviour
 {
+
+    public Animator animator;
     private void Start()
     {
         // Attach the button click event listener
@@ -15,6 +17,15 @@ public class ReturnZoo : MonoBehaviour
     // Handle button click event
     void OnButtonClick()
     {
-        SceneManager.LoadScene("Encyclopaedia");
+        StartCoroutine(LoadingZoo());
     }
+
+    IEnumerator LoadingZoo()
+    {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Encyclopaedia");
+        animator.SetTrigger("Start");
+    }
+
 }

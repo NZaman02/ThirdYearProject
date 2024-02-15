@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.IO;
-
+using System.Collections;
 
 public class AnimalButton : MonoBehaviour
 {
@@ -16,9 +16,12 @@ public class AnimalButton : MonoBehaviour
     public Transform gridParent;
     public GameObject starImage;
     private int starNum = 0;
+    private Animator animator;
 
-    public void SetAnimalData(AnimalAns data)
+
+    public void SetAnimalData(AnimalAns data, Animator givenAnimator)
     {
+        animator = givenAnimator;
         GetComponent<Button>().onClick.AddListener(OnButtonClick);
         //sets up images, data and listeners for all buttons
         animalData = data;
@@ -58,9 +61,18 @@ public class AnimalButton : MonoBehaviour
 
     void OnButtonClick()
     {
+         StartCoroutine(LoadingAnimal());
+    }
+
+    IEnumerator LoadingAnimal()
+    {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
         //so quiz knows what animal
         PlayerPrefs.SetString("Animal", animalData.name);
         //activates quiz
         SceneManager.LoadScene("AnimalCard");
+        animator.SetTrigger("Start");
     }
+
 }
