@@ -11,6 +11,7 @@ public class NPCInteractable : MonoBehaviour
 {
     public string animalName;
 
+
     public void Interact()
     {
 
@@ -41,9 +42,9 @@ public class NPCInteractable : MonoBehaviour
             SceneManager.LoadScene("Quiz Scene");
         }
 
-      
 
-     
+
+
 
     }
 

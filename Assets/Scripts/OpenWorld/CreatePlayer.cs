@@ -36,7 +36,6 @@ public class CreatePlayer : MonoBehaviour
                         player.transform.position = spawnPosition;
                         break;
                     case "Grasslands":
-                        Debug.Log(player.transform.position);
                         spawnPosition = new Vector3(73f, 2.0f, 1f);
                         player.transform.position = spawnPosition;
                         break;
