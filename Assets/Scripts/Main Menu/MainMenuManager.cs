@@ -16,7 +16,7 @@ public class MainMenuManager : MonoBehaviour
     public Button newGameButton;
     public Button loadGameButton;
     public Button quitGameButton;
-    
+    public Animator animator;
     public TextAsset answerBankText;
 
     // Start is called before the first frame update
@@ -66,8 +66,15 @@ public class MainMenuManager : MonoBehaviour
 
     void LoadGame()
     {
-        SceneManager.LoadScene("Grasslands");
+        StartCoroutine(LoadingGame());
+    }
 
+    IEnumerator LoadingGame()
+    {
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Grasslands");
+        animator.SetTrigger("Start");
     }
 
 

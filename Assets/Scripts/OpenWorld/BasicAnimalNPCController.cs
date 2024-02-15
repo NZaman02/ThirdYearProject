@@ -10,6 +10,7 @@ public class BasicAnimalNPCController : MonoBehaviour
     public float maxDistFromPlayer = 100.0f;
     public string playerTag = "Player";
     private Transform playerTransform;
+    private SpriteRenderer spriteRenderer;
 
 
 
@@ -38,7 +39,19 @@ public class BasicAnimalNPCController : MonoBehaviour
 
         // Move the animal in the chosen direction
         Vector2 movement = randomDirection * maxSpeed * Time.deltaTime;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
         transform.Translate(movement);
+
+
 
         // Ensure the NPC does not exceed the maximum speed.
         if (movement.magnitude > maxSpeed)

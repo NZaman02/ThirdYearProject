@@ -31,7 +31,7 @@ public class LootboxInteractable : MonoBehaviour
           
         }
         //make sure know enough before doing
-        if (totalKnowledgeUnlocked > 12)
+        if (totalKnowledgeUnlocked > 6)
         {
             SceneManager.LoadScene("Lootbox Quiz Scene");
         }
