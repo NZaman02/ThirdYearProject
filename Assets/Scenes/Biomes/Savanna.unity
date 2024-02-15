@@ -941,6 +941,7 @@ MonoBehaviour:
   SceneDestination: Grasslands
   CurrentScene: Savanna
   sceneManager: {fileID: 112372012}
+  animator: {fileID: 735884269}
 --- !u!61 &458601593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132483,6 +132484,7 @@ MonoBehaviour:
   SceneDestination: Desert
   CurrentScene: Savanna
   sceneManager: {fileID: 112372012}
+  animator: {fileID: 735884269}
 --- !u!61 &911317464
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132988,6 +132990,7 @@ MonoBehaviour:
   SceneDestination: Coast
   CurrentScene: Savanna
   sceneManager: {fileID: 112372012}
+  animator: {fileID: 735884269}
 --- !u!61 &1317689169
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133353,6 +133356,7 @@ MonoBehaviour:
   SceneDestination: Grasslands
   CurrentScene: Savanna
   sceneManager: {fileID: 112372012}
+  animator: {fileID: 735884269}
 --- !u!61 &1860472833
 BoxCollider2D:
   m_ObjectHideFlags: 0

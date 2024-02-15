@@ -1640,6 +1640,7 @@ MonoBehaviour:
   SceneDestination: Woodlands
   CurrentScene: Forest
   sceneManager: {fileID: 1403626131}
+  animator: {fileID: 7813352}
 --- !u!61 &703932168
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77357,6 +77358,7 @@ MonoBehaviour:
   SceneDestination: Desert
   CurrentScene: Forest
   sceneManager: {fileID: 1403626131}
+  animator: {fileID: 7813352}
 --- !u!61 &1784426089
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77928,6 +77930,7 @@ MonoBehaviour:
   SceneDestination: Coast
   CurrentScene: Forest
   sceneManager: {fileID: 1403626131}
+  animator: {fileID: 7813352}
 --- !u!61 &2141297337
 BoxCollider2D:
   m_ObjectHideFlags: 0

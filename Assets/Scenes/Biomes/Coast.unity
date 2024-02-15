@@ -306,6 +306,7 @@ MonoBehaviour:
   SceneDestination: Forest
   CurrentScene: Coast
   sceneManager: {fileID: 383769167}
+  animator: {fileID: 1752098893}
 --- !u!61 &280801781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -399,6 +400,7 @@ MonoBehaviour:
   SceneDestination: Savanna
   CurrentScene: Coast
   sceneManager: {fileID: 383769167}
+  animator: {fileID: 1752098893}
 --- !u!61 &353511458
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -646,6 +648,7 @@ MonoBehaviour:
   SceneDestination: Woodlands
   CurrentScene: Coast
   sceneManager: {fileID: 383769167}
+  animator: {fileID: 1752098893}
 --- !u!61 &1005136519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75149,6 +75152,7 @@ MonoBehaviour:
   SceneDestination: Grasslands
   CurrentScene: Coast
   sceneManager: {fileID: 383769167}
+  animator: {fileID: 1752098893}
 --- !u!61 &1663833812
 BoxCollider2D:
   m_ObjectHideFlags: 0
