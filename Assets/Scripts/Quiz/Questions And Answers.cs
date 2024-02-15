@@ -124,7 +124,6 @@ public class QuestionsAndAnswers : MonoBehaviour
             {
                 object attributeValue = field.GetValue(myAnimalFactsList[indexNeeded]);
                 Answers[i] = attributeValue?.ToString();
-           
             }
             else
                 {
@@ -144,7 +143,6 @@ public class QuestionsAndAnswers : MonoBehaviour
                     //puts wrong answers in extra answer spots
 
                     object attributeValue = field.GetValue(myAnimalFactsList[incorrectAnimals[wrongAniDone]]);
-
                     //checks not already in or is a duplicate of answer
                     if (!(Answers.Contains(attributeValue.ToString())) && !(attributeValue?.ToString() == field.GetValue(myAnimalFactsList[indexNeeded])?.ToString())   )
                     {
@@ -163,9 +161,8 @@ public class QuestionsAndAnswers : MonoBehaviour
 
 
             }
-
         }
-   
+
         //adds units to answers
         for (int i = 0; i < Answers.Length; i++)
         {
@@ -205,10 +202,10 @@ public class QuestionsAndAnswers : MonoBehaviour
         string ourChoice = "";
         while (looping)
         {
-            int randomAnimal = UnityEngine.Random.Range(0, animalChoices.Count);
+            int randomAnimal = UnityEngine.Random.Range(1, animalChoices.Count);
             ourChoice = (attributeName.GetValue(myAnimalFactsList[randomAnimal]))?.ToString();
             //makes sure wrong ans not already used
-          if( !(currentlyUsed.Contains(ourChoice) && !(correctAnswer == ourChoice))) 
+            if (!currentlyUsed.Contains(ourChoice) && ourChoice != correctAnswer)
             {
                 looping = false;
             }
