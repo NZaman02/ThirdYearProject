@@ -19,7 +19,7 @@ public class CatchManager : MonoBehaviour
     public Button continueButton;
     public Image animalImage;
     private string currentAnimal;
-    public Animator animatorDice1,animatorDice2, animator;
+    public Animator animatorDice1,animatorDice2, animator, dissapearAnim;
 
     //update knowledge
     private int correctAns;
@@ -237,6 +237,8 @@ public class CatchManager : MonoBehaviour
 
     private void NotCaught()
     {
+        dissapearAnim.SetTrigger("StartDissapear");
+
         continueButton.onClick.AddListener(LoadOpenSceneOnClick);
         continueButton.gameObject.SetActive(true);
         result.text = "UNLUCKY TRY AGAIN";
