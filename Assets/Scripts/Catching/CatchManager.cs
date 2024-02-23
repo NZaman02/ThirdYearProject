@@ -19,7 +19,7 @@ public class CatchManager : MonoBehaviour
     public Button continueButton;
     public Image animalImage;
     private string currentAnimal;
-    public Animator animatorDice1,animatorDice2, animator, dissapearAnim;
+    public Animator animatorDice1,animatorDice2, animator, dissapearAnim, animalImgAnim;
 
     //update knowledge
     private int correctAns;
@@ -156,7 +156,7 @@ public class CatchManager : MonoBehaviour
         animatorDice2.SetInteger("D1 Roll", dice2Val);
         animatorDice2.SetBool("Rolling", false);
         finalAmount.text = finalAmountVal.ToString();
-
+        finalAmountVal = 2;
         if (finalAmountVal >= amountNeededVal) 
         {
             result.color = Color.green;
@@ -165,7 +165,7 @@ public class CatchManager : MonoBehaviour
         else
         {
             result.color = Color.red;
-            NotCaught();
+            StartCoroutine(NotCaught());
         }
         continueButton.gameObject.SetActive(true);
 
@@ -235,9 +235,12 @@ public class CatchManager : MonoBehaviour
     }
 
 
-    private void NotCaught()
+    IEnumerator NotCaught()
     {
-        dissapearAnim.SetTrigger("StartDissapear");
+        dissapearAnim.SetBool("StartDissapear",true);
+        animalImgAnim.SetBool("AnimalGone",true);
+        yield return new WaitForSeconds(2);
+        dissapearAnim.SetBool("StartDoor",true);
 
         continueButton.onClick.AddListener(LoadOpenSceneOnClick);
         continueButton.gameObject.SetActive(true);
