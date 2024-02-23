@@ -156,7 +156,6 @@ public class CatchManager : MonoBehaviour
         animatorDice2.SetInteger("D1 Roll", dice2Val);
         animatorDice2.SetBool("Rolling", false);
         finalAmount.text = finalAmountVal.ToString();
-        finalAmountVal = 2;
         if (finalAmountVal >= amountNeededVal) 
         {
             result.color = Color.green;
@@ -244,7 +243,7 @@ public class CatchManager : MonoBehaviour
 
         continueButton.onClick.AddListener(LoadOpenSceneOnClick);
         continueButton.gameObject.SetActive(true);
-        result.text = "UNLUCKY TRY AGAIN";
+        result.text = "Unlucky Try Again";
         continueText.text = "Return To Open World";
     }
 
