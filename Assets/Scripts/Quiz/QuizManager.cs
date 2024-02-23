@@ -20,7 +20,7 @@ public class QuizManager : MonoBehaviour
     public TMP_Text animalNameText;
     public Image animalImage;
     public Animator animator;
-
+    public Image backgroundImg;
 
     //csv
     private float startTime, endTime; 
@@ -34,6 +34,16 @@ public class QuizManager : MonoBehaviour
     private void Start()
     {
         //set up images
+        string prevScene = PlayerPrefs.GetString("PrevScene");
+
+        string spritePath = prevScene + "Background";
+        Sprite myBackgroundImg = Resources.Load<Sprite>(spritePath);
+        if (myBackgroundImg != null)
+        {
+            backgroundImg.sprite = myBackgroundImg;
+        }
+
+
         string data = PlayerPrefs.GetString("Animal");
         Sprite animalSprite = Resources.Load<Sprite>(data);
 
