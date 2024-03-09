@@ -10,6 +10,7 @@ public class CreatePlayer : MonoBehaviour
     private CameraFollow cameraFollow;
     public GameObject cameraObject, playerPrefab;
     private string prevScene;
+    
 
     // Start is called before the first frame update
     void Start()

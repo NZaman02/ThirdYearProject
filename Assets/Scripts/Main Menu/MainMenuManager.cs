@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
 
     public Button newGameButton;
     public Button loadGameButton;
+    public Button tutorialButton;
     public Button quitGameButton;
     public Animator animator;
     public TextAsset answerBankText;
@@ -25,8 +26,7 @@ public class MainMenuManager : MonoBehaviour
         newGameButton.onClick.AddListener(NewGame);
         loadGameButton.onClick.AddListener(LoadGame);
         quitGameButton.onClick.AddListener(QuitGame);
-
-
+        tutorialButton.onClick.AddListener(Tutorial);
     }
 
 
@@ -63,6 +63,10 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 
     void LoadGame()
     {
