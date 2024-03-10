@@ -17,8 +17,9 @@ public class LootboxQuizManager : MonoBehaviour
     public TextAsset answerBankText;
 
     public Button animal1,animal2, animal3, answer1, answer2, answer3, reset, returnOpenWorld;
-    public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text,result;
+    public TMP_Text animal1Text, animal2Text, animal3Text, answer1Text, answer2Text, answer3Text;
     public Animator animator;
+    public Image resultImg;
 
     //what has been pressed
     private int[] pair1,pair2,pair3;
@@ -27,6 +28,7 @@ public class LootboxQuizManager : MonoBehaviour
     //questions chosen and where they go 
     private int[,] answersToUse,ansPairs;
     private float startTime, endTime;
+
 
 
     // Start is called before the first frame update
@@ -38,9 +40,7 @@ public class LootboxQuizManager : MonoBehaviour
 
         numclicked = 0;
         returnOpenWorld.gameObject.SetActive(false);
-        Color textColor = result.color;
-        textColor.a = 0;
-        result.color = textColor;
+       
 
         startTime = Time.time;
         answersToUse = setupQuestions();
@@ -143,18 +143,33 @@ public class LootboxQuizManager : MonoBehaviour
             
             
         }
-        Color textColor = result.color;
-        textColor.a = 255;
-        result.color = textColor;
+       
         if (allFound)
         {
-            result.text = "Correct";
+            Sprite theSprite = Resources.Load<Sprite>("correct");
+
+            if (theSprite != null)
+            {
+                resultImg.sprite = theSprite;
+                Color color = resultImg.color;
+                color.a = 255f;
+                resultImg.color = color;
+            }
             PlayerPrefs.SetInt("JetpackUses", 3);
             updateStats(1);
         }
         else
         {
-            result.text = "Wrong";
+            Sprite theSprite = Resources.Load<Sprite>("wrong");
+
+            if (theSprite != null)
+            {
+                resultImg.sprite = theSprite;
+                Color color = resultImg.color;
+                color.a = 255f;
+                resultImg.color = color;
+            }
+
 
             //shows correct answer
             for (int x = 0;x< 3; x++)
