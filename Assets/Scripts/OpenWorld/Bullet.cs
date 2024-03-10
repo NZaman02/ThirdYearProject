@@ -7,11 +7,21 @@ public class Bullet : MonoBehaviour
 {
 
     private Vector3 shootDir;
+    private float moveSpeed = 10f;
+
+
+    private float shrinkSpeed = 0.7f;
+    private Vector3 startingScale;
+    public float minScale = 0.1f;
+    private Collider2D bulletCollider;
+
     public void Setup(Vector3 shootDir)
     {
         this.shootDir = shootDir;
         transform.eulerAngles = new Vector3(0,0,GetAngleFromVectorFloat(shootDir));
-        Destroy(gameObject, 3f);
+        startingScale = transform.localScale;
+        bulletCollider = GetComponent<Collider2D>();
+
     }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)
@@ -24,8 +34,25 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        float moveSpeed = 20f;
         transform.position += shootDir * moveSpeed * Time.deltaTime;
+
+        ShrinkBullet();
+        if (transform.localScale.magnitude <= minScale)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+
+    private void ShrinkBullet()
+    {
+        // Decrease the scale gradually
+        transform.localScale -= startingScale * shrinkSpeed * Time.deltaTime;
+        if (bulletCollider != null)
+        {
+            bulletCollider.transform.localScale = transform.localScale;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
