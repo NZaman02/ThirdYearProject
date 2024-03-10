@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9035009333020011475}
   - component: {fileID: 8290187662367206617}
   - component: {fileID: -4348076363562137777}
+  - component: {fileID: 3756446287149419504}
   m_Layer: 0
   m_Name: AfricanClawlessOtterNPC
   m_TagString: Animal
@@ -203,7 +204,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13796675, y: -0.052834332}
+  m_Offset: {x: -0.038835466, y: -0.052834332}
   m_SpriteTilingProperty:
     border: {x: 0.21875, y: 1, z: 0, w: 1.15625}
     pivot: {x: 0.5, y: 0.5}
@@ -214,7 +215,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.941985, y: 0.8348464}
+  m_Size: {x: 2.8379836, y: 0.8348464}
   m_EdgeRadius: 0
 --- !u!114 &-4348076363562137777
 MonoBehaviour:
@@ -229,3 +230,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: African Clawless Otter
+--- !u!61 &3756446287149419504
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328723876185770976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06240076, y: -0.05200073}
+  m_SpriteTilingProperty:
+    border: {x: 0.21875, y: 1, z: 0, w: 1.15625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 64.89, y: 50.853733}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8751984, y: 0.9051171}
+  m_EdgeRadius: 0
