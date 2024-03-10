@@ -10,7 +10,7 @@ public class PlayerAimWeapon : MonoBehaviour
     public class OnShootEventArgs: EventArgs
     {
         public Vector3 gunEndPointPosition;
-        public Vector3 shootPositon;
+        public Vector3 shootPosition;
     }
 
     private Transform aimTransform;
@@ -47,8 +47,8 @@ public class PlayerAimWeapon : MonoBehaviour
             OnShoot?.Invoke(this, new OnShootEventArgs
             {
                 gunEndPointPosition = aimGunEndPointTransform.position,
-                shootPositon = mousePosition
-            }); 
+                shootPosition = mousePosition,
+            });
         }
     }
 

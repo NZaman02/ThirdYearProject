@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 197002867614123992}
   - component: {fileID: 5510797268233540221}
   - component: {fileID: 7408044987342528238}
+  - component: {fileID: 8343641622114201523}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -227,7 +228,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65df948ddc14df7449ffadee79752e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimGunEndPointTransform: {fileID: 0}
+  aimGunEndPointTransform: {fileID: 2204643306240973554}
+--- !u!114 &8343641622114201523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146651966056673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0004de04574e8742a2ac8453831f2cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 5216373854777619870, guid: b30a33e2295c3cf4eaf362caca72b12c, type: 3}
+  playerAimWeapon: {fileID: 7408044987342528238}
 --- !u!1 &1883133160382373347
 GameObject:
   m_ObjectHideFlags: 0
