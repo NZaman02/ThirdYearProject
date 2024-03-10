@@ -42,7 +42,7 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime && IsMouseInShootingArea())
         {
             Vector3 mousePosition= GetMouseWorldPosition();
             OnShoot?.Invoke(this, new OnShootEventArgs
@@ -54,7 +54,38 @@ public class PlayerAimWeapon : MonoBehaviour
         }
     }
 
-    public static Vector3 GetMouseWorldPosition()
+        public Rect[] nonShootingAreas = new Rect[]
+        {
+
+        // Define non-shooting areas for the top-left corner of the screen
+         new Rect(0f, 1f - 0.27f, 0.2f, 0.27f),  // Top-left corner
+
+         // Define non-shooting areas for the top-right corner of the screen
+         new Rect(1f - 0.2f, 1f - 0.25f, 0.2f, 0.25f) // Top-right corner
+        };
+
+    
+    private bool IsMouseInShootingArea()
+    {
+        Vector3 mousePos = Input.mousePosition;
+
+        Vector2 normalizedMousePos = new Vector2(mousePos.x / Screen.width, mousePos.y / Screen.height);
+        Debug.Log(normalizedMousePos);
+
+        // Check if the mouse position is within any shooting area
+        foreach (Rect area in nonShootingAreas)
+        {
+            if (area.Contains(normalizedMousePos))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+public static Vector3 GetMouseWorldPosition()
     {
         Vector3 vec = GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
         vec.z = 0f;
