@@ -70,7 +70,6 @@ public class PlayerAimWeapon : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
 
         Vector2 normalizedMousePos = new Vector2(mousePos.x / Screen.width, mousePos.y / Screen.height);
-        Debug.Log(normalizedMousePos);
 
         // Check if the mouse position is within any shooting area
         foreach (Rect area in nonShootingAreas)
