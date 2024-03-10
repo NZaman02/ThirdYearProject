@@ -1,10 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
+
+    public event EventHandler<OnShootEventArgs> OnShoot;
+    public class OnShootEventArgs: EventArgs
+    {
+        public Vector3 gunEndPointPosition;
+        public Vector3 shootPositon;
+    }
+
     private Transform aimTransform;
+    public Transform aimGunEndPointTransform;
 
     private void Awake()
     {
@@ -13,13 +23,33 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePostion  = GetMouseWorldPosition();
-        
+        HandleAiming();
+        HandleShooting();
+
+    }
+
+    private void HandleAiming()
+    {
+        Vector3 mousePostion = GetMouseWorldPosition();
+
 
         Vector3 aimDirection = (mousePostion - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        aimTransform.eulerAngles = new Vector3(0,0,angle);
+        aimTransform.eulerAngles = new Vector3(0, 0, angle);
+    }
 
+
+    private void HandleShooting()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 mousePosition= GetMouseWorldPosition();
+            OnShoot?.Invoke(this, new OnShootEventArgs
+            {
+                gunEndPointPosition = aimGunEndPointTransform.position,
+                shootPositon = mousePosition
+            }); 
+        }
     }
 
     public static Vector3 GetMouseWorldPosition()
