@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minScale: 0.1
+  playerCollider: {fileID: 2582211005550402530, guid: 55faad7d278e20941af55ecec29e3602, type: 3}
 --- !u!61 &5864148979965375411
 BoxCollider2D:
   m_ObjectHideFlags: 0

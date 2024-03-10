@@ -22,6 +22,13 @@ public class Bullet : MonoBehaviour
         startingScale = transform.localScale;
         bulletCollider = GetComponent<Collider2D>();
 
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Collider2D playerCollider = player.GetComponent<Collider2D>();
+
+        if (bulletCollider != null && playerCollider != null)
+        {
+            Physics2D.IgnoreCollision(bulletCollider, playerCollider);
+        }
     }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)
