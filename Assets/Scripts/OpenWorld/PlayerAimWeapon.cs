@@ -36,6 +36,16 @@ public class PlayerAimWeapon : MonoBehaviour
 
         Vector3 aimDirection = (mousePostion - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        if (aimDirection.x < 0)
+        {
+            aimTransform.localScale = new Vector3(-1, 1, 1); 
+            angle += 180f; 
+        }
+        else
+        {
+            aimTransform.localScale = new Vector3(1, 1, 1); 
+        }
+
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
     }
 
