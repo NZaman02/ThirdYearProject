@@ -5,7 +5,8 @@ using System;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
-
+    public float fireRate = 0.5f;
+    private float nextFireTime = 0f;
     public event EventHandler<OnShootEventArgs> OnShoot;
     public class OnShootEventArgs: EventArgs
     {
@@ -41,7 +42,7 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
             Vector3 mousePosition= GetMouseWorldPosition();
             OnShoot?.Invoke(this, new OnShootEventArgs
@@ -49,6 +50,7 @@ public class PlayerAimWeapon : MonoBehaviour
                 gunEndPointPosition = aimGunEndPointTransform.position,
                 shootPosition = mousePosition,
             });
+            nextFireTime = Time.time + fireRate; 
         }
     }
 

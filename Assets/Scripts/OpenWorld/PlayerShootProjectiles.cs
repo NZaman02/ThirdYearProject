@@ -24,7 +24,7 @@ public class PlayerShootProjectiles : MonoBehaviour
     private void PlayerShootProjectiles_OnShoot(object sender, PlayerAimWeapon.OnShootEventArgs e)
     {
         Transform bulletTransform = Instantiate(bullet, e.gunEndPointPosition, Quaternion.identity);
-        Vector3 shootDir = e.shootPosition - e.gunEndPointPosition.normalized;
+        Vector3 shootDir = (e.shootPosition - e.gunEndPointPosition).normalized;
         bulletTransform.GetComponent<Bullet>().Setup(shootDir);
     }
     
