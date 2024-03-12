@@ -17,7 +17,7 @@ public class CatchManager : MonoBehaviour
     public TextAsset answerBankText;
     private int dice1Val, dice2Val, bonusVal, amountNeededVal;
     public Button continueButton;
-    public Image animalImage;
+    public Image animalImage, polaroidImage;
     private string currentAnimal;
     public Animator animatorDice1,animatorDice2, animator, dissapearAnim, animalImgAnim;
 
@@ -95,6 +95,25 @@ public class CatchManager : MonoBehaviour
 
     }
 
+    IEnumerator FadeIn()
+    {
+  
+        Color startColor = polaroidImage.color;
+        startColor.a = 0f;
+        polaroidImage.color = startColor;
+        float step = Time.deltaTime / 1.5f;
+        while (polaroidImage.color.a < 1f)
+        {
+            startColor.a += step;
+            polaroidImage.color = startColor;
+            yield return null;
+        }
+
+        // Ensure alpha reaches exactly 1
+        startColor.a = 1f;
+        polaroidImage.color = startColor;
+    }
+
     IEnumerator SetupCatchingContext()
     {
         continueButton.gameObject.SetActive(false);
@@ -145,7 +164,8 @@ public class CatchManager : MonoBehaviour
         //do text
         bonus.text = bonusVal.ToString();
         amountNeeded.text = amountNeededVal.ToString();
-       
+
+        dissapearAnim.SetBool("StartCatch", false);
         animatorDice1.SetBool("Rolling", true);
         animatorDice2.SetBool("Rolling", true);
         yield return new WaitForSeconds(3);
@@ -175,6 +195,7 @@ public class CatchManager : MonoBehaviour
         //feedback catch
         continueButton.gameObject.SetActive(true);
         result.text = "CAUGHT";
+        StartCoroutine(FadeIn());
         //work out current player knowledge
         string filePath = Path.Combine(Application.persistentDataPath, "playerKnowledge.csv");
         string[] knowledgeData = System.IO.File.ReadAllLines(filePath);
@@ -242,9 +263,9 @@ public class CatchManager : MonoBehaviour
         dissapearAnim.SetBool("StartDoor",true);
 
         continueButton.onClick.AddListener(LoadOpenSceneOnClick);
+        continueText.text = "Return To Open World";
         continueButton.gameObject.SetActive(true);
         result.text = "Unlucky Try Again";
-        continueText.text = "Return To Open World";
     }
 
     private void LoadOpenSceneOnClick()
