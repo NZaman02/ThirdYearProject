@@ -8,8 +8,8 @@ public class AnimalSpawner : MonoBehaviour
     public GameObject[] animalPrefabs; // prefabs to spawn
     public float spawnInterval = 5.0f; // Time between spawns
     public float spawnRadius = 10.0f; // Maximum distance can be spawned at
-    public float maxPlayerDistance = 10.0f; // Maximum distance can be spawned from player
-    public float minPlayerDistance = 3.0f; // Minimum distance can be spawned from player
+    public float maxPlayerDistance = 30.0f; // Maximum distance can be spawned from player
+    public float minPlayerDistance = 10.0f; // Minimum distance can be spawned from player
     public int maxSpawnedAnimals = 5; // Maximum number of animals that can be spawned at one time
 
     public Transform player; // Reference to the player object

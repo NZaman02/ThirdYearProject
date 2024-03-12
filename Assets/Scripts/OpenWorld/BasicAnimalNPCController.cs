@@ -7,7 +7,7 @@ public class BasicAnimalNPCController : MonoBehaviour
     public float moveSpeed = 1.0f;
     public float wanderTime = 3.0f;
     public float maxSpeed = 5.0f;
-    public float maxDistFromPlayer = 100.0f;
+    public float maxDistFromPlayer = 200.0f;
     public string playerTag = "Player";
     private Transform playerTransform;
     private SpriteRenderer spriteRenderer;

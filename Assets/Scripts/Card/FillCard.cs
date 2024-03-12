@@ -182,13 +182,13 @@ public class FillCard : MonoBehaviour
         while (elapsedTime < duration)
         {
             float alpha = Mathf.Lerp(start, end, elapsedTime / duration);
-            text.color = new Color(1f, 0.92f, 0.016f, alpha);
+            text.color = new Color(0f, 0f, 1f, alpha);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-       
-        text.color = new Color(1f, 0.92f, 0.016f, end);
+
+        text.color = new Color(0f, 0f, 1f, end);
 
 
     }
