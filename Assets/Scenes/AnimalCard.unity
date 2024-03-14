@@ -845,8 +845,8 @@ MonoBehaviour:
   funFact: {fileID: 1201674492}
   animalImage: {fileID: 1051248458}
   fadeDuration: 3
+  continueButton: {fileID: 1956685242}
   answerBankText: {fileID: 4900000, guid: f0e03fa06606540409c67d0bd034cc90, type: 3}
-  knowledgeText: {fileID: 4900000, guid: 9b9897a52375c9d4198a417f96ba0783, type: 3}
 --- !u!4 &569589051
 Transform:
   m_ObjectHideFlags: 0

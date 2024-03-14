@@ -24,10 +24,9 @@ public class FillCard : MonoBehaviour
     public TMP_Text funFact;
     public Image animalImage;
     public float fadeDuration = 4.5f;
-
+    public Button continueButton;
 
     public TextAsset answerBankText;
-    public TextAsset knowledgeText;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +108,7 @@ public class FillCard : MonoBehaviour
         //alpha 0 for text to be faded
         if (PlayerPrefs.GetString("JustCaught") == "True")
         {
+            continueButton.gameObject.SetActive(false);
             //alpha relevant text
             PlayerPrefs.SetString("JustCaught", "False");
             if (playerKnowledgeLevel == 1)
@@ -175,20 +175,22 @@ public class FillCard : MonoBehaviour
 
     private IEnumerator FadeText(TMP_Text text, float start, float end, float duration)
     {
-       
+
+        text.fontStyle = FontStyles.Bold;
 
         float elapsedTime = 0f;
         //fades alpha over time
         while (elapsedTime < duration)
         {
             float alpha = Mathf.Lerp(start, end, elapsedTime / duration);
-            text.color = new Color(0f, 0f, 1f, alpha);
+            text.color = new Color(1f, 1f, 0f, alpha);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
 
-        text.color = new Color(0f, 0f, 1f, end);
+        text.color = new Color(1f, 1f, 0f, end);
+        continueButton.gameObject.SetActive(true);
 
 
     }

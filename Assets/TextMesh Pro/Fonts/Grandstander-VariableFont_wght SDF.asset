@@ -1051,6 +1051,21 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
+  - m_Index: 656
+    m_Metrics:
+      m_Width: 12.546875
+      m_Height: 54.046875
+      m_HorizontalBearingX: 5
+      m_HorizontalBearingY: 40.8125
+      m_HorizontalAdvance: 26.6875
+    m_GlyphRect:
+      m_X: 366
+      m_Y: 331
+      m_Width: 13
+      m_Height: 55
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
   - m_Index: 658
     m_Metrics:
       m_Width: 59.3125
@@ -1141,18 +1156,18 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-  - m_Index: 656
+  - m_Index: 702
     m_Metrics:
-      m_Width: 12.546875
-      m_Height: 54.046875
-      m_HorizontalBearingX: 5
-      m_HorizontalBearingY: 40.8125
-      m_HorizontalAdvance: 26.6875
+      m_Width: 0
+      m_Height: 0
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 0
+      m_HorizontalAdvance: 27.671875
     m_GlyphRect:
-      m_X: 366
-      m_Y: 331
-      m_Width: 13
-      m_Height: 55
+      m_X: 0
+      m_Y: 0
+      m_Width: 0
+      m_Height: 0
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -1172,6 +1187,10 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
   m_CharacterTable:
+  - m_ElementType: 1
+    m_Unicode: 13
+    m_GlyphIndex: 704
+    m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 32
     m_GlyphIndex: 701
@@ -1231,6 +1250,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 58
     m_GlyphIndex: 654
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 59
+    m_GlyphIndex: 656
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 63
@@ -1449,16 +1472,12 @@ MonoBehaviour:
     m_GlyphIndex: 534
     m_Scale: 1
   - m_ElementType: 1
+    m_Unicode: 160
+    m_GlyphIndex: 702
+    m_Scale: 1
+  - m_ElementType: 1
     m_Unicode: 8230
     m_GlyphIndex: 658
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 59
-    m_GlyphIndex: 656
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 13
-    m_GlyphIndex: 704
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: -4327553920326908376}
